@@ -1,59 +1,12 @@
-<script>
-    document.getElementById("examForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      
-      const formData = new FormData(this);
-      const object = {};
-      formData.forEach((value, key) => {
-        object[key] = value;
-      });
-      const json = JSON.stringify(object);
-      
-      // Substitua 'SUA_URL_DO_WEBAPP' pela URL gerada no Apps Script
-      fetch("https://script.google.com/macros/s/AKfycbyXR0BjeXlzaE3W_Au7bbqGt08YiuXnvCQ1TkU9ibIZf7Z6jpuGRn0bvj0PdQTF2WTX", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: json
-      })
-      .then(response => response.json())
-      .then(data => {
-        if(data.result === 'success') {
-          alert("Resposta registrada com sucesso!");
-          // Opcional: Limpar o formulário
-          document.getElementById("examForm").reset();
-        } else {
-          alert("Ocorreu um erro: " + data.message);
-        }
-      })
-      .catch(error => {
-        console.error("Erro:", error);
-        alert("Erro ao enviar os dados.");
-      });
-    });
-    
-    function doGet(e) {
-          return ContentService.createTextOutput("Este aplicativo suporta apenas requisições POST.");
-}
-
-    
-
-  </script>
-  
-function doGet(e) {
-  return ContentService.createTextOutput("Este aplicativo suporta apenas requisições POST.");
-}
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Questionário de Exames Periciais e de Localística</title>
-  <!-- Importando a fonte Roboto -->
+  <title>Questionário de Exames</title>
+  <!-- Importa a fonte Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* Estilos gerais inspirados no Google Forms */
+    /* Estilos Gerais */
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f5f5f5;
@@ -68,16 +21,25 @@ function doGet(e) {
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    h1, h2 {
-      text-align: center;
-      font-weight: 400;
-    }
-    h1 {
+    /* Cabeçalho */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 20px;
+    }
+    .header h1 {
+      margin: 0;
+    }
+    .header label {
+      margin-right: 5px;
+      font-weight: 500;
+    }
+    h2, h3, h4 {
+      text-align: center;
+      margin: 20px 0 10px;
     }
     h2 {
-      margin-top: 40px;
-      margin-bottom: 20px;
       border-bottom: 2px solid #dadce0;
       padding-bottom: 5px;
     }
@@ -89,7 +51,6 @@ function doGet(e) {
     .question:last-child {
       border-bottom: none;
     }
-    /* Rótulo principal de cada exame com ícone de informação */
     .exam-label {
       font-size: 18px;
       font-weight: 500;
@@ -109,18 +70,22 @@ function doGet(e) {
       margin-left: 8px;
       cursor: pointer;
     }
-    /* Container para o campo "Quantidade:" e o input */
+    /* Grupo de campos para cada item (para páginas 1 e 2) */
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
     .field {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-top: 8px;
     }
     .field-label {
       font-size: 16px;
-      min-width: 100px;
+      min-width: 320px;
     }
-    /* Input com largura fixa para 6 caracteres */
     .field input[type="text"] {
       width: 6ch;
       padding: 5px;
@@ -129,17 +94,17 @@ function doGet(e) {
       border: 1px solid #dadce0;
       border-radius: 4px;
     }
+    /* Botões */
     button {
-      display: block;
-      width: 100%;
-      padding: 12px;
+      display: inline-block;
+      padding: 12px 20px;
       font-size: 16px;
       color: #fff;
       background-color: #4285f4;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      margin-top: 20px;
+      margin: 10px 5px;
       transition: background-color 0.2s ease;
     }
     button:hover {
@@ -152,415 +117,1184 @@ function doGet(e) {
       border: 1px solid #c6dafc;
       border-radius: 4px;
     }
+    /* Controle de exibição das páginas */
+    .form-page {
+      display: none;
+    }
+    .form-page.active {
+      display: block;
+    }
   </style>
+  
+  <!-- Scripts do Firebase (opcional) -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>Questionário de Exames</h1>
+    <!-- Cabeçalho com o título e o combo "Ano de Referência" -->
+    <div class="header">
+      <h1>Questionário de Exames</h1>
+      <div>
+        <label for="refYear">Ano de Referência:</label>
+        <select id="refYear">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+      </div>
+    </div>
     
-    <!-- Seção 1: Exames Periciais -->
-    <h2>Exames Periciais</h2>
     <form id="examForm">
-      <!-- Exame 1: Lesões Corporais (Corpo de Delito) -->
-      <div class="question">
-        <label class="exam-label" for="exame1">
-          Exame de Lesões Corporais (Corpo de Delito)
-          <span class="info-icon" title="Avaliação física para verificar a presença, gravidade e natureza das lesões, conforme o art. 129 do CP. Realizado em vítimas de agressões ou acidentes.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame1">Quantidade:</label>
-          <input type="text" id="exame1" name="exame1" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+      <!-- Página 1 – Medicina Legal (11 itens) -->
+      <div class="form-page active" id="page1">
+        <h2>Medicina Legal</h2>
+        <!-- Cada item possui três campos -->
+        <!-- Item 1 -->
+        <div class="question">
+          <label class="exam-label" for="exame1">Exame de Lesões Corporais (Corpo de Delito)
+            <span class="info-icon" title="Avaliação física para verificar a presença, gravidade e natureza das lesões.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame1_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame1_entradas" name="exame1_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame1_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame1_entregas" name="exame1_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame1_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado de anos anteriores a <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame1_entregas_anterior" name="exame1_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 2: Lesões Corporais "Ad Cautelam" -->
-      <div class="question">
-        <label class="exam-label" for="exame2">
-          Exame de Lesões Corporais "Ad Cautelam"
-          <span class="info-icon" title="Exame preventivo para registrar a presença ou ausência de lesões em pessoas detidas ou envolvidas em ocorrências policiais.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame2">Quantidade:</label>
-          <input type="text" id="exame2" name="exame2" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 2 -->
+        <div class="question">
+          <label class="exam-label" for="exame2">Exame de Lesões Corporais "Ad Cautelam"
+            <span class="info-icon" title="Exame preventivo para registrar a presença ou ausência de lesões.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame2_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame2_entradas" name="exame2_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame2_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame2_entregas" name="exame2_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame2_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado de anos anteriores a <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame2_entregas_anterior" name="exame2_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 3: Lesões Corporais (DPVAT) -->
-      <div class="question">
-        <label class="exam-label" for="exame3">
-          Exame de Lesões Corporais (DPVAT)
-          <span class="info-icon" title="Exame para comprovar lesões decorrentes de acidentes de trânsito, subsidiando pedidos baseados no DPVAT.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame3">Quantidade:</label>
-          <input type="text" id="exame3" name="exame3" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 3 -->
+        <div class="question">
+          <label class="exam-label" for="exame3">Exame de Lesões Corporais (DPVAT)
+            <span class="info-icon" title="Exame para comprovar lesões decorrentes de acidentes de trânsito.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame3_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame3_entradas" name="exame3_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame3_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame3_entregas" name="exame3_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame3_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado de anos anteriores a <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame3_entregas_anterior" name="exame3_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 4: Lesões Corporais (Odontológico) -->
-      <div class="question">
-        <label class="exam-label" for="exame4">
-          Exame de Lesões Corporais (Odontológico)
-          <span class="info-icon" title="Análise de lesões na região bucal e nos dentes realizada por odontolegistas para determinar a extensão do dano.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame4">Quantidade:</label>
-          <input type="text" id="exame4" name="exame4" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 4 -->
+        <div class="question">
+          <label class="exam-label" for="exame4">Exame de Lesões Corporais (Odontológico)
+            <span class="info-icon" title="Análise de lesões na região bucal e nos dentes.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame4_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame4_entradas" name="exame4_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame4_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame4_entregas" name="exame4_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame4_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado de anos anteriores a <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame4_entregas_anterior" name="exame4_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 5: Verificação de Violência Sexual -->
-      <div class="question">
-        <label class="exam-label" for="exame5">
-          Exame para Verificação de Violência Sexual
-          <span class="info-icon" title="Procedimento para comprovar a ocorrência de violência sexual.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame5">Quantidade:</label>
-          <input type="text" id="exame5" name="exame5" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 5 -->
+        <div class="question">
+          <label class="exam-label" for="exame5">Exame para Verificação de Violência Sexual
+            <span class="info-icon" title="Procedimento para comprovar a ocorrência de violência sexual.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame5_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame5_entradas" name="exame5_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame5_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame5_entregas" name="exame5_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame5_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado...):</label>
+              <input type="text" id="exame5_entregas_anterior" name="exame5_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 6: Verificação de Aborto -->
-      <div class="question">
-        <label class="exam-label" for="exame6">
-          Exame para Verificação de Aborto
-          <span class="info-icon" title="Exame que identifica sinais indicativos de aborto, seja voluntário ou forçado.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame6">Quantidade:</label>
-          <input type="text" id="exame6" name="exame6" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 6 -->
+        <div class="question">
+          <label class="exam-label" for="exame6">Exame para Verificação de Aborto
+            <span class="info-icon" title="Exame que identifica sinais indicativos de aborto.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame6_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame6_entradas" name="exame6_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame6_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame6_entregas" name="exame6_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame6_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado...):</label>
+              <input type="text" id="exame6_entregas_anterior" name="exame6_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 7: Exames em Prontuários Médicos -->
-      <div class="question">
-        <label class="exam-label" for="exame7">
-          Exames em Prontuários Médicos
-          <span class="info-icon" title="Análise documental de registros médicos para esclarecer informações periciais.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame7">Quantidade:</label>
-          <input type="text" id="exame7" name="exame7" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 7 -->
+        <div class="question">
+          <label class="exam-label" for="exame7">Exames em Prontuários Médicos
+            <span class="info-icon" title="Análise documental de registros médicos.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame7_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame7_entradas" name="exame7_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame7_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame7_entregas" name="exame7_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame7_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado...):</label>
+              <input type="text" id="exame7_entregas_anterior" name="exame7_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 8: Necropsia -->
-      <div class="question">
-        <label class="exam-label" for="exame8">
-          Exame de Necropsia
-          <span class="info-icon" title="Autópsia realizada para determinar a causa da morte e outros elementos periciais.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame8">Quantidade:</label>
-          <input type="text" id="exame8" name="exame8" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 8 -->
+        <div class="question">
+          <label class="exam-label" for="exame8">Exame de Necropsia
+            <span class="info-icon" title="Autópsia realizada para determinar a causa da morte.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame8_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame8_entradas" name="exame8_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame8_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame8_entregas" name="exame8_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame8_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado...):</label>
+              <input type="text" id="exame8_entregas_anterior" name="exame8_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 9: Psiquiátrico (Sanidade Mental) -->
-      <div class="question">
-        <label class="exam-label" for="exame9">
-          Exame Psiquiátrico (Sanidade Mental)
-          <span class="info-icon" title="Avaliação para verificar a capacidade mental e responsabilidade penal.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame9">Quantidade:</label>
-          <input type="text" id="exame9" name="exame9" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 9 -->
+        <div class="question">
+          <label class="exam-label" for="exame9">Exame Psiquiátrico (Sanidade Mental)
+            <span class="info-icon" title="Avaliação para verificar a capacidade mental e responsabilidade penal.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame9_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame9_entradas" name="exame9_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame9_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame9_entregas" name="exame9_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame9_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado...):</label>
+              <input type="text" id="exame9_entregas_anterior" name="exame9_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 10: Dependência Toxicológica -->
-      <div class="question">
-        <label class="exam-label" for="exame10">
-          Exame de Dependência Toxicológica
-          <span class="info-icon" title="Avalia a dependência de substâncias psicoativas com análise clínica e laboratorial.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame10">Quantidade:</label>
-          <input type="text" id="exame10" name="exame10" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 10 -->
+        <div class="question">
+          <label class="exam-label" for="exame10">Exame de Dependência Toxicológica
+            <span class="info-icon" title="Avalia a dependência de substâncias psicoativas.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame10_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame10_entradas" name="exame10_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame10_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame10_entregas" name="exame10_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame10_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado...):</label>
+              <input type="text" id="exame10_entregas_anterior" name="exame10_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Exame 11: Identificação Humana pelos Arcos Dentais -->
-      <div class="question">
-        <label class="exam-label" for="exame11">
-          Identificação Humana pelos Arcos Dentais
-          <span class="info-icon" title="Utiliza a arcada dentária para identificar vítimas quando outros métodos não são eficazes.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="exame11">Quantidade:</label>
-          <input type="text" id="exame11" name="exame11" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
+        <!-- Item 11 -->
+        <div class="question">
+          <label class="exam-label" for="exame11">Identificação Humana pelos Arcos Dentais
+            <span class="info-icon" title="Utiliza a arcada dentária para identificar vítimas.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="exame11_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame11_entradas" name="exame11_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame11_entregas">Número de entregas (referente às entradas de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="exame11_entregas" name="exame11_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="exame11_entregas_anterior">Número de entregas no <span class="ref-year">2023</span> (passivo acumulado...):</label>
+              <input type="text" id="exame11_entregas_anterior" name="exame11_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <!-- Seção 2: Exames de Localística -->
-      <h2>Exames de Localística</h2>
-      <!-- Exame de Local: Acidente de Trânsito com Morte -->
-      <div class="question">
-        <label class="exam-label" for="local1">
-          Exame em Local de Acidente de Trânsito com Morte
-          <span class="info-icon" title="Análise da cena de colisões que resultaram em óbito, com coleta de vestígios, medições e documentação das condições da via e dos veículos.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local1">Quantidade:</label>
-          <input type="text" id="local1" name="local1" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Atropelamento com Morte -->
-      <div class="question">
-        <label class="exam-label" for="local2">
-          Exame em Local de Atropelamento com Morte
-          <span class="info-icon" title="Realizado em casos de atropelamentos fatais, focando na posição da vítima, sinais de impacto e marcas na via.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local2">Quantidade:</label>
-          <input type="text" id="local2" name="local2" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Acidente de Trânsito sem Morte – Danos Materiais -->
-      <div class="question">
-        <label class="exam-label" for="local3">
-          Exame em Local de Acidente de Trânsito sem Morte – Danos Materiais
-          <span class="info-icon" title="Avaliação de acidentes que causaram apenas danos materiais, com registro de marcas de frenagem e posicionamento dos veículos.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local3">Quantidade:</label>
-          <input type="text" id="local3" name="local3" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Incêndio com Morte -->
-      <div class="question">
-        <label class="exam-label" for="local4">
-          Exame em Local de Incêndio com Morte
-          <span class="info-icon" title="Investigação de locais com incêndios fatais, identificando a origem do fogo, possíveis causas e a condição das vítimas.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local4">Quantidade:</label>
-          <input type="text" id="local4" name="local4" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Incêndio sem Morte -->
-      <div class="question">
-        <label class="exam-label" for="local5">
-          Exame em Local de Incêndio sem Morte
-          <span class="info-icon" title="Destinado a incêndios sem vítimas fatais, com foco em danos materiais e análise de resíduos inflamáveis ou estruturais.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local5">Quantidade:</label>
-          <input type="text" id="local5" name="local5" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Fuga de Preso -->
-      <div class="question">
-        <label class="exam-label" for="local6">
-          Exame em Local de Fuga de Preso
-          <span class="info-icon" title="Análise do local de fuga de um preso, verificando rotas de fuga, danos em estruturas e coleta de evidências.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local6">Quantidade:</label>
-          <input type="text" id="local6" name="local6" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Acidente de Trabalho com Morte -->
-      <div class="question">
-        <label class="exam-label" for="local7">
-          Exame em Local de Acidente de Trabalho com Morte
-          <span class="info-icon" title="Realizado em acidentes fatais no ambiente laboral, investigando condições de segurança, equipamentos e possíveis falhas.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local7">Quantidade:</label>
-          <input type="text" id="local7" name="local7" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Desabamento/Soterramento -->
-      <div class="question">
-        <label class="exam-label" for="local8">
-          Exame em Local de Desabamento/Soterramento
-          <span class="info-icon" title="Análise de estruturas colapsadas ou locais de soterramento, com coleta de dados sobre a dinâmica do evento e identificação de vítimas.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local8">Quantidade:</label>
-          <input type="text" id="local8" name="local8" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Explosão -->
-      <div class="question">
-        <label class="exam-label" for="local9">
-          Exame em Local de Explosão
-          <span class="info-icon" title="Avaliação de áreas com explosões, buscando fragmentos, resíduos químicos e analisando as condições do incidente.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local9">Quantidade:</label>
-          <input type="text" id="local9" name="local9" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Morte – Crimes Contra a Vida (Homicídio) -->
-      <div class="question">
-        <label class="exam-label" for="local10">
-          Exame em Local de Morte – Crimes Contra a Vida (Homicídio)
-          <span class="info-icon" title="Investigação de cenas de homicídio, com foco em vestígios de sangue, armas, projéteis e a posição do corpo.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local10">Quantidade:</label>
-          <input type="text" id="local10" name="local10" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Morte – Crimes Contra a Vida (Suicídio) -->
-      <div class="question">
-        <label class="exam-label" for="local11">
-          Exame em Local de Morte – Crimes Contra a Vida (Suicídio)
-          <span class="info-icon" title="Exame realizado em locais de suicídio para verificar a compatibilidade dos vestígios com a hipótese de autoextermínio.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local11">Quantidade:</label>
-          <input type="text" id="local11" name="local11" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Morte Decorrente de Intervenção Policial -->
-      <div class="question">
-        <label class="exam-label" for="local12">
-          Exame em Local de Morte Decorrente de Intervenção Policial
-          <span class="info-icon" title="Análise de cenas onde ocorreu morte durante ações policiais, com coleta de vestígios para verificar a legitimidade do uso da força.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local12">Quantidade:</label>
-          <input type="text" id="local12" name="local12" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Morte com Causa Incerta -->
-      <div class="question">
-        <label class="exam-label" for="local13">
-          Exame em Local de Morte com Causa Incerta
-          <span class="info-icon" title="Exame em locais onde a causa da morte não é evidente, buscando sinais que indiquem se foi crime, acidente ou morte natural.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local13">Quantidade:</label>
-          <input type="text" id="local13" name="local13" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Aplicação de Luminol -->
-      <div class="question">
-        <label class="exam-label" for="local14">
-          Exame de Local – Aplicação de Luminol
-          <span class="info-icon" title="Técnica utilizada para revelar vestígios de sangue invisíveis a olho nu, mesmo após tentativas de limpeza.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local14">Quantidade:</label>
-          <input type="text" id="local14" name="local14" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Tentativa de Homicídio -->
-      <div class="question">
-        <label class="exam-label" for="local15">
-          Exame em Local de Tentativa de Homicídio
-          <span class="info-icon" title="Investigação de cenas com tentativa de homicídio, buscando vestígios que comprovem a dinâmica do evento e identifiquem o autor.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local15">Quantidade:</label>
-          <input type="text" id="local15" name="local15" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Furto Qualificado -->
-      <div class="question">
-        <label class="exam-label" for="local16">
-          Exame em Local de Furto Qualificado
-          <span class="info-icon" title="Análise de locais de furtos, com registro de marcas de arrombamento, impressões digitais e vestígios de acesso forçado.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local16">Quantidade:</label>
-          <input type="text" id="local16" name="local16" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Violação de Sepultura -->
-      <div class="question">
-        <label class="exam-label" for="local17">
-          Exame em Local de Violação de Sepultura
-          <span class="info-icon" title="Investiga cenas de violação de túmulos ou sepulturas, com análise de danos, vestígios e possíveis roubos ou profanações.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local17">Quantidade:</label>
-          <input type="text" id="local17" name="local17" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Crimes Contra o Patrimônio -->
-      <div class="question">
-        <label class="exam-label" for="local18">
-          Exame em Local de Crimes Contra o Patrimônio
-          <span class="info-icon" title="Abrange furtos, roubos, vandalismo e outros delitos que envolvem danos ou subtração de bens.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local18">Quantidade:</label>
-          <input type="text" id="local18" name="local18" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Crimes Contra o Meio Ambiente -->
-      <div class="question">
-        <label class="exam-label" for="local19">
-          Exame em Local de Crimes Contra o Meio Ambiente
-          <span class="info-icon" title="Investigação de crimes ambientais, como desmatamento, poluição ou descarte ilegal de resíduos.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local19">Quantidade:</label>
-          <input type="text" id="local19" name="local19" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Geotecnia Ambiental -->
-      <div class="question">
-        <label class="exam-label" for="local20">
-          Exame de Geotecnia Ambiental
-          <span class="info-icon" title="Avaliação técnica de solos, encostas e áreas de risco em situações de deslizamentos ou contaminação do solo.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local20">Quantidade:</label>
-          <input type="text" id="local20" name="local20" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
-      </div>
-      <!-- Exame de Local: Busca e Apreensão de Vestígios Cibernéticos -->
-      <div class="question">
-        <label class="exam-label" for="local21">
-          Busca e Apreensão de Vestígios Cibernéticos
-          <span class="info-icon" title="Procedimento para coleta de dispositivos e dados eletrônicos em operações policiais, preservando informações digitais como prova.">i</span>
-        </label>
-        <div class="field">
-          <label class="field-label" for="local21">Quantidade:</label>
-          <input type="text" id="local21" name="local21" maxlength="6" pattern="\d{1,6}" inputmode="numeric"
-                 oninput="this.value = this.value.replace(/\D/g, '')" required>
-        </div>
+        
+        <button type="button" id="btnNext1">Próximo</button>
       </div>
       
-      <button type="submit">Enviar</button>
+      <!-- Página 2 – Exames de Localística (21 itens) -->
+      <div class="form-page" id="page2">
+        <h2>Exames de Localística</h2>
+        <!-- Replicamos 21 itens com a mesma estrutura (exemplo abaixo; repita para os itens 2 a 21) -->
+        <!-- Item 1 -->
+        <div class="question">
+          <label class="exam-label" for="local1">Exame em Local de Acidente de Trânsito com Morte
+            <span class="info-icon" title="Análise da cena de colisões fatais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local1_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local1_entradas" name="local1_entradas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local1_entregas">Número de entregas (referente às entradas):</label>
+              <input type="text" id="local1_entregas" name="local1_entregas" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local1_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local1_entregas_anterior" name="local1_entregas_anterior" maxlength="6" pattern="\d{1,6}" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Itens 2 a 21 – copie e ajuste os IDs, names e rótulos conforme listado abaixo: -->
+        <!-- Item 2: Exame em Local de Atropelamento com Morte -->
+        <div class="question">
+          <label class="exam-label" for="local2">Exame em Local de Atropelamento com Morte
+            <span class="info-icon" title="Realizado em casos de atropelamentos fatais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local2_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local2_entradas" name="local2_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local2_entregas">Número de entregas (referente às entradas):</label>
+              <input type="text" id="local2_entregas" name="local2_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local2_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local2_entregas_anterior" name="local2_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3: Exame em Local de Acidente de Trânsito sem Morte – Danos Materiais -->
+        <div class="question">
+          <label class="exam-label" for="local3">Exame em Local de Acidente de Trânsito sem Morte – Danos Materiais
+            <span class="info-icon" title="Avaliação de acidentes com danos materiais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local3_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local3_entradas" name="local3_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local3_entregas">Número de entregas:</label>
+              <input type="text" id="local3_entregas" name="local3_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local3_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local3_entregas_anterior" name="local3_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4: Exame em Local de Incêndio com Morte -->
+        <div class="question">
+          <label class="exam-label" for="local4">Exame em Local de Incêndio com Morte
+            <span class="info-icon" title="Investigação de locais com incêndios fatais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local4_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local4_entradas" name="local4_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local4_entregas">Número de entregas:</label>
+              <input type="text" id="local4_entregas" name="local4_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local4_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local4_entregas_anterior" name="local4_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5: Exame em Local de Incêndio sem Morte -->
+        <div class="question">
+          <label class="exam-label" for="local5">Exame em Local de Incêndio sem Morte
+            <span class="info-icon" title="Destinado a incêndios sem vítimas fatais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local5_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local5_entradas" name="local5_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local5_entregas">Número de entregas:</label>
+              <input type="text" id="local5_entregas" name="local5_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local5_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local5_entregas_anterior" name="local5_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6: Exame em Local de Fuga de Preso -->
+        <div class="question">
+          <label class="exam-label" for="local6">Exame em Local de Fuga de Preso
+            <span class="info-icon" title="Análise do local de fuga de um preso.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local6_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local6_entradas" name="local6_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local6_entregas">Número de entregas:</label>
+              <input type="text" id="local6_entregas" name="local6_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local6_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local6_entregas_anterior" name="local6_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 7: Exame em Local de Acidente de Trabalho com Morte -->
+        <div class="question">
+          <label class="exam-label" for="local7">Exame em Local de Acidente de Trabalho com Morte
+            <span class="info-icon" title="Investigação de acidentes fatais no ambiente laboral.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local7_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local7_entradas" name="local7_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local7_entregas">Número de entregas:</label>
+              <input type="text" id="local7_entregas" name="local7_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local7_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local7_entregas_anterior" name="local7_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 8: Exame em Local de Desabamento/Soterramento -->
+        <div class="question">
+          <label class="exam-label" for="local8">Exame em Local de Desabamento/Soterramento
+            <span class="info-icon" title="Análise de estruturas colapsadas ou locais de soterramento.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local8_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local8_entradas" name="local8_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local8_entregas">Número de entregas:</label>
+              <input type="text" id="local8_entregas" name="local8_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local8_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local8_entregas_anterior" name="local8_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 9: Exame em Local de Explosão -->
+        <div class="question">
+          <label class="exam-label" for="local9">Exame em Local de Explosão
+            <span class="info-icon" title="Avaliação de áreas com explosões.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local9_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local9_entradas" name="local9_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local9_entregas">Número de entregas:</label>
+              <input type="text" id="local9_entregas" name="local9_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local9_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local9_entregas_anterior" name="local9_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 10: Exame em Local de Morte – Crimes Contra a Vida (Homicídio) -->
+        <div class="question">
+          <label class="exam-label" for="local10">Exame em Local de Morte – Crimes Contra a Vida (Homicídio)
+            <span class="info-icon" title="Investigação de cenas de homicídio.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local10_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local10_entradas" name="local10_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local10_entregas">Número de entregas:</label>
+              <input type="text" id="local10_entregas" name="local10_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local10_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local10_entregas_anterior" name="local10_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 11: Exame em Local de Morte – Crimes Contra a Vida (Suicídio) -->
+        <div class="question">
+          <label class="exam-label" for="local11">Exame em Local de Morte – Crimes Contra a Vida (Suicídio)
+            <span class="info-icon" title="Exame realizado em locais de suicídio.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local11_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local11_entradas" name="local11_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local11_entregas">Número de entregas:</label>
+              <input type="text" id="local11_entregas" name="local11_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local11_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local11_entregas_anterior" name="local11_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 12: Exame em Local de Morte Decorrente de Intervenção Policial -->
+        <div class="question">
+          <label class="exam-label" for="local12">Exame em Local de Morte Decorrente de Intervenção Policial
+            <span class="info-icon" title="Análise de cenas de morte durante ações policiais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local12_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local12_entradas" name="local12_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local12_entregas">Número de entregas:</label>
+              <input type="text" id="local12_entregas" name="local12_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local12_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local12_entregas_anterior" name="local12_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 13: Exame em Local de Morte com Causa Incerta -->
+        <div class="question">
+          <label class="exam-label" for="local13">Exame em Local de Morte com Causa Incerta
+            <span class="info-icon" title="Busca sinais que indiquem a causa da morte.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local13_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local13_entradas" name="local13_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local13_entregas">Número de entregas:</label>
+              <input type="text" id="local13_entregas" name="local13_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local13_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local13_entregas_anterior" name="local13_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 14: Exame de Local – Aplicação de Luminol -->
+        <div class="question">
+          <label class="exam-label" for="local14">Exame de Local – Aplicação de Luminol
+            <span class="info-icon" title="Técnica para revelar vestígios de sangue invisíveis a olho nu.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local14_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local14_entradas" name="local14_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local14_entregas">Número de entregas:</label>
+              <input type="text" id="local14_entregas" name="local14_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local14_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local14_entregas_anterior" name="local14_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 15: Exame em Local de Tentativa de Homicídio -->
+        <div class="question">
+          <label class="exam-label" for="local15">Exame em Local de Tentativa de Homicídio
+            <span class="info-icon" title="Investigação de cenas com tentativa de homicídio.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local15_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local15_entradas" name="local15_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local15_entregas">Número de entregas:</label>
+              <input type="text" id="local15_entregas" name="local15_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local15_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local15_entregas_anterior" name="local15_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 16: Exame em Local de Furto Qualificado -->
+        <div class="question">
+          <label class="exam-label" for="local16">Exame em Local de Furto Qualificado
+            <span class="info-icon" title="Análise de locais de furtos, com registro de marcas de arrombamento.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local16_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local16_entradas" name="local16_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local16_entregas">Número de entregas:</label>
+              <input type="text" id="local16_entregas" name="local16_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local16_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local16_entregas_anterior" name="local16_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 17: Exame em Local de Violação de Sepultura -->
+        <div class="question">
+          <label class="exam-label" for="local17">Exame em Local de Violação de Sepultura
+            <span class="info-icon" title="Investiga cenas de violação de túmulos ou sepulturas.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local17_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local17_entradas" name="local17_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local17_entregas">Número de entregas:</label>
+              <input type="text" id="local17_entregas" name="local17_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local17_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local17_entregas_anterior" name="local17_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 18: Exame em Local de Crimes Contra o Patrimônio -->
+        <div class="question">
+          <label class="exam-label" for="local18">Exame em Local de Crimes Contra o Patrimônio
+            <span class="info-icon" title="Abrange furtos, roubos e vandalismo.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local18_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local18_entradas" name="local18_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local18_entregas">Número de entregas:</label>
+              <input type="text" id="local18_entregas" name="local18_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local18_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local18_entregas_anterior" name="local18_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 19: Exame em Local de Crimes Contra o Meio Ambiente -->
+        <div class="question">
+          <label class="exam-label" for="local19">Exame em Local de Crimes Contra o Meio Ambiente
+            <span class="info-icon" title="Investigação de crimes ambientais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local19_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local19_entradas" name="local19_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local19_entregas">Número de entregas:</label>
+              <input type="text" id="local19_entregas" name="local19_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local19_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local19_entregas_anterior" name="local19_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 20: Exame de Geotecnia Ambiental -->
+        <div class="question">
+          <label class="exam-label" for="local20">Exame de Geotecnia Ambiental
+            <span class="info-icon" title="Avaliação técnica de solos, encostas e áreas de risco.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local20_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local20_entradas" name="local20_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local20_entregas">Número de entregas:</label>
+              <input type="text" id="local20_entregas" name="local20_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local20_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local20_entregas_anterior" name="local20_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 21: Busca e Apreensão de Vestígios Cibernéticos -->
+        <div class="question">
+          <label class="exam-label" for="local21">Busca e Apreensão de Vestígios Cibernéticos
+            <span class="info-icon" title="Coleta de dispositivos e dados eletrônicos.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="local21_entradas">Número de entradas (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="local21_entradas" name="local21_entradas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local21_entregas">Número de entregas:</label>
+              <input type="text" id="local21_entregas" name="local21_entregas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="local21_entregas_anterior">Número de entregas no <span class="ref-year">2023</span>:</label>
+              <input type="text" id="local21_entregas_anterior" name="local21_entregas_anterior" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        
+        <button type="button" id="btnBack2">Voltar</button>
+        <button type="button" id="btnNext2">Próximo</button>
+      </div>
+      
+      <!-- Página 3 – Exames Laboratoriais -->
+      <div class="form-page" id="page3">
+        <h2>Exames Laboratoriais</h2>
+        <!-- 4.3.1 BALÍSTICA FORENSE -->
+        <h3>4.3.1 Balística Forense</h3>
+        <p>
+          Análise de armas de fogo, munições, projéteis e resíduos de disparo, com o objetivo de identificar características balísticas e estabelecer vínculos entre armas e crimes.
+        </p>
+        <h4>Natureza dos Exames Balísticos</h4>
+        <!-- Balística – 5 itens -->
+        <div class="question">
+          <label class="exam-label" for="balistica1">Exame de Simples Constatação
+            <span class="info-icon" title="Análise básica para verificação de números de série e características.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica1_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="balistica1_exames" name="balistica1_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica1_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="balistica1_pecas" name="balistica1_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica2">Exame de Eficiência e Prestabilidade
+            <span class="info-icon" title="Testa o funcionamento da arma e o estado das munições.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica2_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="balistica2_exames" name="balistica2_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica2_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="balistica2_pecas" name="balistica2_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica3">Coleta de Padrão – SINAB
+            <span class="info-icon" title="Coleta de projéteis e estojos para o SINAB.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica3_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="balistica3_exames" name="balistica3_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica3_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="balistica3_pecas" name="balistica3_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica4">Exame de Inserção no BNPB
+            <span class="info-icon" title="Cadastro de armas ou munições no BNPB.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica4_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="balistica4_exames" name="balistica4_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica4_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="balistica4_pecas" name="balistica4_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica5">Exame de Confronto Balístico
+            <span class="info-icon" title="Compara projéteis e estojos para identificar a arma utilizada.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica5_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="balistica5_exames" name="balistica5_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica5_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="balistica5_pecas" name="balistica5_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        
+        <h4>Peças Analisadas para Balística Forense</h4>
+        <!-- Lista dos 18 itens de peças -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece1">Arma(s) de Choque:</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece1_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece1_qty" name="balistica_piece1_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece2">Arma(s) de Pressão:</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece2_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece2_qty" name="balistica_piece2_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece3">Carabina(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece3_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece3_qty" name="balistica_piece3_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece4">Carregador(es):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece4_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece4_qty" name="balistica_piece4_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece5">Cartucho(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece5_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece5_qty" name="balistica_piece5_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece6">Espingarda(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece6_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece6_qty" name="balistica_piece6_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece7">Espoleta(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece7_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece7_qty" name="balistica_piece7_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece8">Estojo(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece8_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece8_qty" name="balistica_piece8_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece9">Fuzil(is):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece9_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece9_qty" name="balistica_piece9_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece10">Garrucha(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece10_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece10_qty" name="balistica_piece10_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece11">Jet Loader:</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece11_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece11_qty" name="balistica_piece11_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece12">Metralhadora(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece12_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece12_qty" name="balistica_piece12_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece13">Pistola(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece13_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece13_qty" name="balistica_piece13_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece14">Pistoleta(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece14_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece14_qty" name="balistica_piece14_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece15">Pólvora:</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece15_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece15_qty" name="balistica_piece15_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece16">Projéteis:</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece16_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece16_qty" name="balistica_piece16_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece17">Revólver(es):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece17_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece17_qty" name="balistica_piece17_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="balistica_piece18">Submetralhadora(s):</label>
+          <div class="field">
+            <label class="field-label" for="balistica_piece18_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="balistica_piece18_qty" name="balistica_piece18_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        
+        <!-- 4.3.2 COMPUTAÇÃO FORENSE -->
+        <h3>4.3.2 Computação Forense</h3>
+        <p>
+          O laboratório de computação forense realiza análises de dispositivos e dados digitais, essenciais para a investigação de crimes cibernéticos.
+        </p>
+        <h4>Natureza dos Exames Computacionais</h4>
+        <!-- Seis itens -->
+        <div class="question">
+          <label class="exam-label" for="comp1">Exame Computacional Diverso:
+            <span class="info-icon" title="Análise geral de dispositivos e sistemas.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp1_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp1_exames" name="comp1_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp1_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="comp1_pecas" name="comp1_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp2">Exame em Mídias de Armazenamento Computacional:
+            <span class="info-icon" title="Investigação de discos, pen drives, etc.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp2_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp2_exames" name="comp2_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp2_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="comp2_pecas" name="comp2_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp3">Exame em Local de Internet:
+            <span class="info-icon" title="Análise de conexões e atividades digitais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp3_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp3_exames" name="comp3_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp3_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="comp3_pecas" name="comp3_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp4">Exame em Local de Informática:
+            <span class="info-icon" title="Análise em ambientes com dispositivos informáticos.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp4_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp4_exames" name="comp4_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp4_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="comp4_pecas" name="comp4_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp5">Exame em Equipamento Computacional Portátil:
+            <span class="info-icon" title="Avaliação de laptops, tablets, etc.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp5_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp5_exames" name="comp5_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp5_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="comp5_pecas" name="comp5_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp6">Exame em Sistemas Embarcados:
+            <span class="info-icon" title="Investigação de dispositivos com sistemas integrados.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp6_exames">Nº de exames realizados (apenas <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp6_exames" name="comp6_exames" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp6_pecas">Nº de peças analisadas:</label>
+              <input type="text" id="comp6_pecas" name="comp6_pecas" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+            </div>
+          </div>
+        </div>
+        
+        <h4>Materiais Analisados em Computação Forense</h4>
+        <!-- Lista de 18 itens – exemplo de cada -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat1">ALL IN ONE PC:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat1_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat1_qty" name="comp_mat1_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat2">CÂMERA(S) DIGITAL(IS):</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat2_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat2_qty" name="comp_mat2_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat3">CARTÃO DE MEMÓRIA:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat3_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat3_qty" name="comp_mat3_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat4">CARTÃO SIM:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat4_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat4_qty" name="comp_mat4_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat5">CELULAR(ES):</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat5_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat5_qty" name="comp_mat5_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat6">DESKTOP (CPU):</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat6_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat6_qty" name="comp_mat6_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat7">DISCOS DE ARMAZENAMENTO (HD, SSD):</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat7_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat7_qty" name="comp_mat7_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat8">FITA MAGNÉTICA:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat8_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat8_qty" name="comp_mat8_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat9">MÍDIAS ÓPTICAS (CD/DVD/BLURAY/...):</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat9_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat9_qty" name="comp_mat9_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat10">NETBOOK/NETTOP/NOTEBOOK:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat10_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat10_qty" name="comp_mat10_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat11">PEN DRIVE:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat11_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat11_qty" name="comp_mat11_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat12">SERVIDOR(ES)/STORAGE:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat12_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat12_qty" name="comp_mat12_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat13">TABLET:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat13_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat13_qty" name="comp_mat13_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat14">VÍDEO GAME:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat14_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat14_qty" name="comp_mat14_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat15">EQUIPAMENTOS DE REDE:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat15_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat15_qty" name="comp_mat15_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat16">IMPRESSORA(S):</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat16_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat16_qty" name="comp_mat16_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat17">MONITOR(ES):</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat17_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat17_qty" name="comp_mat17_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        <div class="question">
+          <label class="exam-label" for="comp_mat18">SMART TV:</label>
+          <div class="field">
+            <label class="field-label" for="comp_mat18_qty">Quantidade (apenas <span class="ref-year">2023</span>):</label>
+            <input type="text" id="comp_mat18_qty" name="comp_mat18_qty" maxlength="6" pattern="\d{1,6}" oninput="this.value=this.value.replace(/\D/g,'')" required>
+          </div>
+        </div>
+        
+        <button type="button" id="btnBack3">Voltar</button>
+        <button type="submit">Enviar</button>
+      </div>
+      
     </form>
     <div id="result"></div>
   </div>
-
+  
   <script>
-    document.getElementById("examForm").addEventListener("submit", function(event) {
+    // Atualiza todos os <span class="ref-year"> com o ano selecionado
+    const refYearSelect = document.getElementById("refYear");
+    function updateRefYear() {
+      const selectedYear = refYearSelect.value;
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = selectedYear;
+      });
+    }
+    refYearSelect.addEventListener("change", updateRefYear);
+    updateRefYear();
+    
+    // Navegação entre páginas
+    const page1 = document.getElementById("page1");
+    const page2 = document.getElementById("page2");
+    const page3 = document.getElementById("page3");
+    
+    document.getElementById("btnNext1").addEventListener("click", function(){
+      page1.classList.remove("active");
+      page2.classList.add("active");
+    });
+    document.getElementById("btnNext2").addEventListener("click", function(){
+      page2.classList.remove("active");
+      page3.classList.add("active");
+    });
+    document.getElementById("btnBack2").addEventListener("click", function(){
+      page2.classList.remove("active");
+      page1.classList.add("active");
+    });
+    document.getElementById("btnBack3").addEventListener("click", function(){
+      page3.classList.remove("active");
+      page2.classList.add("active");
+    });
+    
+    // Submissão do formulário
+    document.getElementById("examForm").addEventListener("submit", function(event){
       event.preventDefault();
       const formData = new FormData(this);
-      let resultHTML = "<h2>Resumo das Quantidades:</h2><ul>";
-      for (const [chave, valor] of formData.entries()) {
-        resultHTML += `<li><strong>${chave}:</strong> ${valor}</li>`;
+      let resultHTML = "<h2>Resumo dos Valores:</h2><ul>";
+      for(const [key, value] of formData.entries()){
+        resultHTML += `<li><strong>${key}:</strong> ${value}</li>`;
       }
       resultHTML += "</ul>";
       document.getElementById("result").innerHTML = resultHTML;
