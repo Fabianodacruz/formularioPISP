@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Medicina Legal - Questionário de Exames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', sans-serif; background-color: #f5f5f5; margin: 0; padding: 0; }
+    .container { max-width: 900px; background: #fff; margin: 50px auto; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .question { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; }
+    .exam-label { font-size: 18px; font-weight: 500; }
+    .field-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .field { display: flex; align-items: center; gap: 10px; }
+    .field-label { font-size: 16px; min-width: 320px; }
+    .field input[type="text"] { width: 6ch; padding: 5px; font-size: 16px; text-align: center; border: 1px solid #dadce0; border-radius: 4px; }
+    .info-icon { display: inline-block; width: 18px; height: 18px; background-color: #4285f4; color: #fff; border-radius: 50%; text-align: center; font-size: 12px; line-height: 18px; margin-left: 8px; }
+    a { color: #4285f4; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Medicina Legal</h1>
+      <div>
+        <label for="refYear">Ano de Referência:</label>
+        <select id="refYear">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+      </div>
+    </header>
+    <main>
+      <!-- Item 1 -->
+      <div class="question">
+        <label class="exam-label" for="exame1">1. Exame de Lesões Corporais (Corpo de Delito)
+          <span class="info-icon" title="Avaliação física para verificar lesões.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame1_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame1_entradas" name="exame1_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame1_entregas">Entregas:</label>
+            <input type="text" id="exame1_entregas" name="exame1_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame1_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame1_entregas_anterior" name="exame1_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="question">
+        <label class="exam-label" for="exame2">2. Exame de Lesões Corporais "Ad Cautelam"
+          <span class="info-icon" title="Exame preventivo para verificar lesões.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame2_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame2_entradas" name="exame2_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame2_entregas">Entregas:</label>
+            <input type="text" id="exame2_entregas" name="exame2_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame2_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame2_entregas_anterior" name="exame2_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="question">
+        <label class="exam-label" for="exame3">3. Exame de Lesões Corporais (DPVAT)
+          <span class="info-icon" title="Exame para comprovar lesões decorrentes de acidentes de trânsito.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame3_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame3_entradas" name="exame3_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame3_entregas">Entregas:</label>
+            <input type="text" id="exame3_entregas" name="exame3_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame3_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame3_entregas_anterior" name="exame3_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 4 -->
+      <div class="question">
+        <label class="exam-label" for="exame4">4. Exame de Lesões Corporais (Odontológico)
+          <span class="info-icon" title="Análise de lesões bucais.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame4_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame4_entradas" name="exame4_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame4_entregas">Entregas:</label>
+            <input type="text" id="exame4_entregas" name="exame4_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame4_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame4_entregas_anterior" name="exame4_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 5 -->
+      <div class="question">
+        <label class="exam-label" for="exame5">5. Exame para Verificação de Violência Sexual
+          <span class="info-icon" title="Procedimento para comprovar violência sexual.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame5_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame5_entradas" name="exame5_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame5_entregas">Entregas:</label>
+            <input type="text" id="exame5_entregas" name="exame5_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame5_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame5_entregas_anterior" name="exame5_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 6 -->
+      <div class="question">
+        <label class="exam-label" for="exame6">6. Exame para Verificação de Aborto
+          <span class="info-icon" title="Identifica sinais de aborto.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame6_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame6_entradas" name="exame6_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame6_entregas">Entregas:</label>
+            <input type="text" id="exame6_entregas" name="exame6_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame6_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame6_entregas_anterior" name="exame6_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 7 -->
+      <div class="question">
+        <label class="exam-label" for="exame7">7. Exames em Prontuários Médicos
+          <span class="info-icon" title="Análise de registros médicos.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame7_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame7_entradas" name="exame7_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame7_entregas">Entregas:</label>
+            <input type="text" id="exame7_entregas" name="exame7_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame7_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame7_entregas_anterior" name="exame7_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 8 -->
+      <div class="question">
+        <label class="exam-label" for="exame8">8. Exame de Necropsia
+          <span class="info-icon" title="Autópsia para determinar a causa da morte.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame8_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame8_entradas" name="exame8_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame8_entregas">Entregas:</label>
+            <input type="text" id="exame8_entregas" name="exame8_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame8_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame8_entregas_anterior" name="exame8_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 9 -->
+      <div class="question">
+        <label class="exam-label" for="exame9">9. Exame Psiquiátrico (Sanidade Mental)
+          <span class="info-icon" title="Avaliação da capacidade mental e responsabilidade penal.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame9_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame9_entradas" name="exame9_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame9_entregas">Entregas:</label>
+            <input type="text" id="exame9_entregas" name="exame9_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame9_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame9_entregas_anterior" name="exame9_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 10 -->
+      <div class="question">
+        <label class="exam-label" for="exame10">10. Exame de Dependência Toxicológica
+          <span class="info-icon" title="Avaliação da dependência de substâncias psicoativas.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame10_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame10_entradas" name="exame10_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame10_entregas">Entregas:</label>
+            <input type="text" id="exame10_entregas" name="exame10_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame10_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame10_entregas_anterior" name="exame10_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 11 -->
+      <div class="question">
+        <label class="exam-label" for="exame11">11. Identificação Humana pelos Arcos Dentais
+          <span class="info-icon" title="Utiliza a arcada dentária para identificar vítimas.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="exame11_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame11_entradas" name="exame11_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame11_entregas">Entregas:</label>
+            <input type="text" id="exame11_entregas" name="exame11_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame11_entregas_anterior">Acumuladas:</label>
+            <input type="text" id="exame11_entregas_anterior" name="exame11_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p><a href="index.html">Voltar ao Menu</a></p>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const refYearSelect = document.getElementById("refYear");
+      function updateRefYear() {
+        const selectedYear = refYearSelect.value;
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
+      }
+      refYearSelect.addEventListener("change", updateRefYear);
+      updateRefYear();
+    });
+  </script>
+</body>
+</html>

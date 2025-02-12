@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exames de Localística - Questionário de Exames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos Gerais */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+    }
+    footer a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Exames de Localística</h1>
+      <div>
+        <label for="refYear">Ano de Referência:</label>
+        <select id="refYear">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+      </div>
+    </header>
+    <main>
+      <!-- Item 1 -->
+      <div class="question">
+        <label class="exam-label" for="local1">
+          1. Exame em Local de Acidente de Trânsito com Morte
+          <span class="info-icon" title="Análise da cena de colisões fatais.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local1_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local1_entradas" name="local1_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local1_entregas">Entregas:</label>
+            <input type="text" id="local1_entregas" name="local1_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local1_acumuladas">Acumuladas:</label>
+            <input type="text" id="local1_acumuladas" name="local1_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="question">
+        <label class="exam-label" for="local2">
+          2. Exame em Local de Atropelamento com Morte
+          <span class="info-icon" title="Realizado em casos de atropelamento fatal.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local2_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local2_entradas" name="local2_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local2_entregas">Entregas:</label>
+            <input type="text" id="local2_entregas" name="local2_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local2_acumuladas">Acumuladas:</label>
+            <input type="text" id="local2_acumuladas" name="local2_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="question">
+        <label class="exam-label" for="local3">
+          3. Exame em Local de Acidente de Trânsito sem Morte – Danos Materiais
+          <span class="info-icon" title="Avaliação de acidentes com danos materiais.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local3_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local3_entradas" name="local3_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local3_entregas">Entregas:</label>
+            <input type="text" id="local3_entregas" name="local3_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local3_acumuladas">Acumuladas:</label>
+            <input type="text" id="local3_acumuladas" name="local3_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 4 -->
+      <div class="question">
+        <label class="exam-label" for="local4">
+          4. Exame em Local de Incêndio com Morte
+          <span class="info-icon" title="Investigação de locais com incêndios fatais.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local4_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local4_entradas" name="local4_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local4_entregas">Entregas:</label>
+            <input type="text" id="local4_entregas" name="local4_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local4_acumuladas">Acumuladas:</label>
+            <input type="text" id="local4_acumuladas" name="local4_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 5 -->
+      <div class="question">
+        <label class="exam-label" for="local5">
+          5. Exame em Local de Incêndio sem Morte
+          <span class="info-icon" title="Para incêndios sem vítimas fatais.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local5_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local5_entradas" name="local5_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local5_entregas">Entregas:</label>
+            <input type="text" id="local5_entregas" name="local5_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local5_acumuladas">Acumuladas:</label>
+            <input type="text" id="local5_acumuladas" name="local5_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 6 -->
+      <div class="question">
+        <label class="exam-label" for="local6">
+          6. Exame em Local de Fuga de Preso
+          <span class="info-icon" title="Análise do local de fuga de um preso.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local6_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local6_entradas" name="local6_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local6_entregas">Entregas:</label>
+            <input type="text" id="local6_entregas" name="local6_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local6_acumuladas">Acumuladas:</label>
+            <input type="text" id="local6_acumuladas" name="local6_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 7 -->
+      <div class="question">
+        <label class="exam-label" for="local7">
+          7. Exame em Local de Acidente de Trabalho com Morte
+          <span class="info-icon" title="Investigação de acidentes fatais no ambiente laboral.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local7_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local7_entradas" name="local7_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local7_entregas">Entregas:</label>
+            <input type="text" id="local7_entregas" name="local7_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local7_acumuladas">Acumuladas:</label>
+            <input type="text" id="local7_acumuladas" name="local7_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 8 -->
+      <div class="question">
+        <label class="exam-label" for="local8">
+          8. Exame em Local de Desabamento/Soterramento
+          <span class="info-icon" title="Análise de estruturas colapsadas ou locais de soterramento.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local8_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local8_entradas" name="local8_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local8_entregas">Entregas:</label>
+            <input type="text" id="local8_entregas" name="local8_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local8_acumuladas">Acumuladas:</label>
+            <input type="text" id="local8_acumuladas" name="local8_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 9 -->
+      <div class="question">
+        <label class="exam-label" for="local9">
+          9. Exame em Local de Explosão
+          <span class="info-icon" title="Avaliação de áreas com explosões.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local9_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local9_entradas" name="local9_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local9_entregas">Entregas:</label>
+            <input type="text" id="local9_entregas" name="local9_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local9_acumuladas">Acumuladas:</label>
+            <input type="text" id="local9_acumuladas" name="local9_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 10 -->
+      <div class="question">
+        <label class="exam-label" for="local10">
+          10. Exame em Local de Morte – Crimes Contra a Vida (Homicídio)
+          <span class="info-icon" title="Investigação de cenas de homicídio.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local10_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local10_entradas" name="local10_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local10_entregas">Entregas:</label>
+            <input type="text" id="local10_entregas" name="local10_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local10_acumuladas">Acumuladas:</label>
+            <input type="text" id="local10_acumuladas" name="local10_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 11 -->
+      <div class="question">
+        <label class="exam-label" for="local11">
+          11. Exame em Local de Morte – Crimes Contra a Vida (Suicídio)
+          <span class="info-icon" title="Exame realizado em locais de suicídio.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local11_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local11_entradas" name="local11_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local11_entregas">Entregas:</label>
+            <input type="text" id="local11_entregas" name="local11_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local11_acumuladas">Acumuladas:</label>
+            <input type="text" id="local11_acumuladas" name="local11_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 12 -->
+      <div class="question">
+        <label class="exam-label" for="local12">
+          12. Exame em Local de Morte Decorrente de Intervenção Policial
+          <span class="info-icon" title="Análise de cenas de morte durante ações policiais.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local12_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local12_entradas" name="local12_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local12_entregas">Entregas:</label>
+            <input type="text" id="local12_entregas" name="local12_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local12_acumuladas">Acumuladas:</label>
+            <input type="text" id="local12_acumuladas" name="local12_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 13 -->
+      <div class="question">
+        <label class="exam-label" for="local13">
+          13. Exame em Local de Morte com Causa Incerta
+          <span class="info-icon" title="Busca sinais que indiquem a causa da morte.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local13_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local13_entradas" name="local13_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local13_entregas">Entregas:</label>
+            <input type="text" id="local13_entregas" name="local13_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local13_acumuladas">Acumuladas:</label>
+            <input type="text" id="local13_acumuladas" name="local13_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 14 -->
+      <div class="question">
+        <label class="exam-label" for="local14">
+          14. Exame de Local – Aplicação de Luminol
+          <span class="info-icon" title="Técnica para revelar vestígios de sangue invisíveis a olho nu.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local14_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local14_entradas" name="local14_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local14_entregas">Entregas:</label>
+            <input type="text" id="local14_entregas" name="local14_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local14_acumuladas">Acumuladas:</label>
+            <input type="text" id="local14_acumuladas" name="local14_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 15 -->
+      <div class="question">
+        <label class="exam-label" for="local15">
+          15. Exame em Local – Tentativa de Homicídio
+          <span class="info-icon" title="Investigação de cenas com tentativa de homicídio.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local15_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local15_entradas" name="local15_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local15_entregas">Entregas:</label>
+            <input type="text" id="local15_entregas" name="local15_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local15_acumuladas">Acumuladas:</label>
+            <input type="text" id="local15_acumuladas" name="local15_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 16 -->
+      <div class="question">
+        <label class="exam-label" for="local16">
+          16. Exame de Local – Compartimentos: Automóveis
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local16_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local16_entradas" name="local16_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local16_entregas">Entregas:</label>
+            <input type="text" id="local16_entregas" name="local16_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local16_acumuladas">Acumuladas:</label>
+            <input type="text" id="local16_acumuladas" name="local16_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 17 -->
+      <div class="question">
+        <label class="exam-label" for="local17">
+          17. Exame de Local – Compartimentos: Motocicletas
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local17_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local17_entradas" name="local17_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local17_entregas">Entregas:</label>
+            <input type="text" id="local17_entregas" name="local17_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local17_acumuladas">Acumuladas:</label>
+            <input type="text" id="local17_acumuladas" name="local17_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 18 -->
+      <div class="question">
+        <label class="exam-label" for="local18">
+          18. Exame de Local – Compartimentos: Caminhões
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local18_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local18_entradas" name="local18_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local18_entregas">Entregas:</label>
+            <input type="text" id="local18_entregas" name="local18_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local18_acumuladas">Acumuladas:</label>
+            <input type="text" id="local18_acumuladas" name="local18_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 19 -->
+      <div class="question">
+        <label class="exam-label" for="local19">
+          19. Exame de Local – Compartimentos: Ônibus
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local19_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local19_entradas" name="local19_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local19_entregas">Entregas:</label>
+            <input type="text" id="local19_entregas" name="local19_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local19_acumuladas">Acumuladas:</label>
+            <input type="text" id="local19_acumuladas" name="local19_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 20 -->
+      <div class="question">
+        <label class="exam-label" for="local20">
+          20. Exame de Local – Compartimentos: Utilitários (vans, pick-ups)
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local20_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local20_entradas" name="local20_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local20_entregas">Entregas:</label>
+            <input type="text" id="local20_entregas" name="local20_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local20_acumuladas">Acumuladas:</label>
+            <input type="text" id="local20_acumuladas" name="local20_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+      <!-- Item 21 -->
+      <div class="question">
+        <label class="exam-label" for="local21">
+          21. Exame de Local – Compartimentos: Reboques e semirreboques
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="local21_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <input type="text" id="local21_entradas" name="local21_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local21_entregas">Entregas:</label>
+            <input type="text" id="local21_entregas" name="local21_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="local21_acumuladas">Acumuladas:</label>
+            <input type="text" id="local21_acumuladas" name="local21_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p><a href="index.html">Voltar ao Menu</a></p>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const refYearSelect = document.getElementById("refYear");
+      function updateRefYear() {
+        const selectedYear = refYearSelect.value;
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
+      }
+      refYearSelect.addEventListener("change", updateRefYear);
+      updateRefYear();
+    });
+  </script>
+</body>
+</html>

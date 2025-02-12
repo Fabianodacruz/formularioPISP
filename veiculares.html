@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exames Veiculares - Questionário de Exames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', sans-serif; background-color: #f5f5f5; margin: 0; padding: 0; }
+    .container { max-width: 900px; background: #fff; margin: 50px auto; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    section { margin-bottom: 40px; }
+    h2 { border-bottom: 2px solid #dadce0; padding-bottom: 5px; }
+    .question { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; }
+    .exam-label { font-size: 18px; font-weight: 500; }
+    .field-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .field { display: flex; align-items: center; gap: 10px; }
+    .field-label { font-size: 16px; min-width: 320px; }
+    .field input[type="text"] { width: 6ch; padding: 5px; font-size: 16px; text-align: center; border: 1px solid #dadce0; border-radius: 4px; }
+    a { color: #4285f4; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Exames Veiculares</h1>
+      <div>
+        <label for="refYear">Ano de Referência:</label>
+        <select id="refYear">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+      </div>
+    </header>
+    <main>
+      <section>
+        <h2>Numerações Identificadoras Veicular</h2>
+        <!-- Item 1: Automóveis -->
+        <div class="question">
+          <label class="exam-label" for="veic1">1. Automóveis</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic1_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic1_entradas" name="veic1_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic1_entregas">Entregas:</label>
+              <input type="text" id="veic1_entregas" name="veic1_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic1_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic1_entregas_anterior" name="veic1_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2: Motocicletas -->
+        <div class="question">
+          <label class="exam-label" for="veic2">2. Motocicletas</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic2_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic2_entradas" name="veic2_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic2_entregas">Entregas:</label>
+              <input type="text" id="veic2_entregas" name="veic2_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic2_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic2_entregas_anterior" name="veic2_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3: Caminhões -->
+        <div class="question">
+          <label class="exam-label" for="veic3">3. Caminhões</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic3_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic3_entradas" name="veic3_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic3_entregas">Entregas:</label>
+              <input type="text" id="veic3_entregas" name="veic3_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic3_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic3_entregas_anterior" name="veic3_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4: Ônibus -->
+        <div class="question">
+          <label class="exam-label" for="veic4">4. Ônibus</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic4_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic4_entradas" name="veic4_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic4_entregas">Entregas:</label>
+              <input type="text" id="veic4_entregas" name="veic4_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic4_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic4_entregas_anterior" name="veic4_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5: Utilitários (vans, pick-ups) -->
+        <div class="question">
+          <label class="exam-label" for="veic5">5. Utilitários (vans, pick-ups)</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic5_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic5_entradas" name="veic5_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic5_entregas">Entregas:</label>
+              <input type="text" id="veic5_entregas" name="veic5_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic5_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic5_entregas_anterior" name="veic5_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6: Reboques e semirreboques -->
+        <div class="question">
+          <label class="exam-label" for="veic6">6. Reboques e semirreboques</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic6_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic6_entradas" name="veic6_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic6_entregas">Entregas:</label>
+              <input type="text" id="veic6_entregas" name="veic6_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic6_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic6_entregas_anterior" name="veic6_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 7: Máquinas agrícolas ou industriais -->
+        <div class="question">
+          <label class="exam-label" for="veic7">7. Máquinas agrícolas ou industriais</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic7_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic7_entradas" name="veic7_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic7_entregas">Entregas:</label>
+              <input type="text" id="veic7_entregas" name="veic7_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic7_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic7_entregas_anterior" name="veic7_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 8: Bicicleta -->
+        <div class="question">
+          <label class="exam-label" for="veic8">8. Bicicleta</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic8_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic8_entradas" name="veic8_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic8_entregas">Entregas:</label>
+              <input type="text" id="veic8_entregas" name="veic8_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic8_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic8_entregas_anterior" name="veic8_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Exame de Compartimentos</h2>
+        <!-- 9 itens -->
+        <!-- Item 9: Automóveis -->
+        <div class="question">
+          <label class="exam-label" for="veic9">9. Automóveis</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic9_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic9_entradas" name="veic9_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic9_entregas">Entregas:</label>
+              <input type="text" id="veic9_entregas" name="veic9_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic9_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic9_entregas_anterior" name="veic9_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 10: Motocicletas -->
+        <div class="question">
+          <label class="exam-label" for="veic10">10. Motocicletas</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic10_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic10_entradas" name="veic10_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic10_entregas">Entregas:</label>
+              <input type="text" id="veic10_entregas" name="veic10_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic10_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic10_entregas_anterior" name="veic10_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 11: Caminhões -->
+        <div class="question">
+          <label class="exam-label" for="veic11">11. Caminhões</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic11_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic11_entradas" name="veic11_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic11_entregas">Entregas:</label>
+              <input type="text" id="veic11_entregas" name="veic11_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic11_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic11_entregas_anterior" name="veic11_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 12: Ônibus -->
+        <div class="question">
+          <label class="exam-label" for="veic12">12. Ônibus</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic12_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic12_entradas" name="veic12_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic12_entregas">Entregas:</label>
+              <input type="text" id="veic12_entregas" name="veic12_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic12_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic12_entregas_anterior" name="veic12_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 13: Utilitários -->
+        <div class="question">
+          <label class="exam-label" for="veic13">13. Utilitários (vans, pick-ups)</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic13_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic13_entradas" name="veic13_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic13_entregas">Entregas:</label>
+              <input type="text" id="veic13_entregas" name="veic13_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic13_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic13_entregas_anterior" name="veic13_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 14: Reboques e semirreboques -->
+        <div class="question">
+          <label class="exam-label" for="veic14">14. Reboques e semirreboques</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic14_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic14_entradas" name="veic14_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic14_entregas">Entregas:</label>
+              <input type="text" id="veic14_entregas" name="veic14_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic14_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic14_entregas_anterior" name="veic14_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 15: Máquinas agrícolas ou industriais -->
+        <div class="question">
+          <label class="exam-label" for="veic15">15. Máquinas agrícolas ou industriais</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic15_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic15_entradas" name="veic15_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic15_entregas">Entregas:</label>
+              <input type="text" id="veic15_entregas" name="veic15_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic15_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic15_entregas_anterior" name="veic15_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 16: Exame de Presença de Substâncias Entorpecentes -->
+        <div class="question">
+          <label class="exam-label" for="veic16">16. Exame de Presença de Substâncias Entorpecentes</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic16_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic16_entradas" name="veic16_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic16_entregas">Entregas:</label>
+              <input type="text" id="veic16_entregas" name="veic16_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic16_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic16_entregas_anterior" name="veic16_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 17: Exame de Confronto de Caracteres -->
+        <div class="question">
+          <label class="exam-label" for="veic17">17. Exame de Confronto de Caracteres</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="veic17_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+              <input type="text" id="veic17_entradas" name="veic17_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic17_entregas">Entregas:</label>
+              <input type="text" id="veic17_entregas" name="veic17_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="veic17_entregas_anterior">Acumuladas:</label>
+              <input type="text" id="veic17_entregas_anterior" name="veic17_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p><a href="index.html">Voltar ao Menu</a></p>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const refYearSelect = document.getElementById("refYear");
+      function updateRefYear() {
+        const selectedYear = refYearSelect.value;
+        document.querySelectorAll(".ref-year").forEach(span => { span.textContent = selectedYear; });
+      }
+      refYearSelect.addEventListener("change", updateRefYear);
+      updateRefYear();
+    });
+  </script>
+</body>
+</html>
