@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>PERÍCIAS EM EXAMES DOCUMENTOSCÓPICOS, GRAFOTÉCNICOS, CONTÁBEIS E AUDIOVISUAIS</title>
+  <title>PERÍCIAS EM EXAMES DOCUMENTOSCÓPICOS, GRAFOTÉCNICOS, CONTÁBEIS</title>
   <!-- Importa a fonte Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -88,14 +88,9 @@
 <body>
   <div class="container">
     <header>
-      <h1>PERÍCIAS EM EXAMES DOCUMENTOSCÓPICOS, GRAFOTÉCNICOS, CONTÁBEIS E AUDIOVISUAIS</h1>
-      <div>
-        <label for="refYear">Ano de Referência:</label>
-        <select id="refYear">
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-        </select>
+      <h1>EXAMES DOCUMENTOSCÓPICOS, GRAFOTÉCNICOS, CONTÁBEIS</h1>
+      <div class="static-info" id="staticInfo">
+        <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
       </div>
     </header>
     <main>
@@ -107,16 +102,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="doc1_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="doc1_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="doc1_entradas" name="doc1_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="doc1_entregas">Entregas:</label>
+            <label class="field-label" for="doc1_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="doc1_entregas" name="doc1_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="doc1_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="doc1_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="doc1_acumuladas" name="doc1_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="doc1_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="doc1_tempo" name="doc1_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -129,16 +128,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="graf2_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="graf2_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="graf2_entradas" name="graf2_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="graf2_entregas">Entregas:</label>
+            <label class="field-label" for="graf2_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="graf2_entregas" name="graf2_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="graf2_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="graf2_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="graf2_acumuladas" name="graf2_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="graf2_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="graf2_tempo" name="graf2_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -151,16 +154,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="imp3_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="imp3_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="imp3_entradas" name="imp3_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="imp3_entregas">Entregas:</label>
+            <label class="field-label" for="imp3_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="imp3_entregas" name="imp3_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="imp3_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="imp3_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="imp3_acumuladas" name="imp3_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="imp3_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="imp3_tempo" name="imp3_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -173,16 +180,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="cont4_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="cont4_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="cont4_entradas" name="cont4_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="cont4_entregas">Entregas:</label>
+            <label class="field-label" for="cont4_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="cont4_entregas" name="cont4_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="cont4_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="cont4_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="cont4_acumuladas" name="cont4_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="cont4_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="cont4_tempo" name="cont4_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -195,16 +206,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="audio5_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="audio5_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="audio5_entradas" name="audio5_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="audio5_entregas">Entregas:</label>
+            <label class="field-label" for="audio5_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="audio5_entregas" name="audio5_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="audio5_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="audio5_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="audio5_acumuladas" name="audio5_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="audio5_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="audio5_tempo" name="audio5_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -217,16 +232,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="video6_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="video6_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="video6_entradas" name="video6_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="video6_entregas">Entregas:</label>
+            <label class="field-label" for="video6_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="video6_entregas" name="video6_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="video6_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="video6_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="video6_acumuladas" name="video6_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="video6_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="video6_tempo" name="video6_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -239,16 +258,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="bio7_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="bio7_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="bio7_entradas" name="bio7_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="bio7_entregas">Entregas:</label>
+            <label class="field-label" for="bio7_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="bio7_entregas" name="bio7_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="bio7_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="bio7_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="bio7_acumuladas" name="bio7_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="bio7_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="bio7_tempo" name="bio7_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -261,16 +284,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="marcas8_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="marcas8_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="marcas8_entradas" name="marcas8_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="marcas8_entregas">Entregas:</label>
+            <label class="field-label" for="marcas8_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="marcas8_entregas" name="marcas8_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="marcas8_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="marcas8_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="marcas8_acumuladas" name="marcas8_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="marcas8_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="marcas8_tempo" name="marcas8_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -283,16 +310,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="locutores9_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="locutores9_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="locutores9_entradas" name="locutores9_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="locutores9_entregas">Entregas:</label>
+            <label class="field-label" for="locutores9_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="locutores9_entregas" name="locutores9_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="locutores9_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="locutores9_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="locutores9_acumuladas" name="locutores9_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="locutores9_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="locutores9_tempo" name="locutores9_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -305,16 +336,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="faciais10_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="faciais10_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="faciais10_entradas" name="faciais10_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="faciais10_entregas">Entregas:</label>
+            <label class="field-label" for="faciais10_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="faciais10_entregas" name="faciais10_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="faciais10_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="faciais10_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="faciais10_acumuladas" name="faciais10_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="faciais10_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="faciais10_tempo" name="faciais10_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -327,16 +362,20 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="velocidade11_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="velocidade11_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="velocidade11_entradas" name="velocidade11_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="velocidade11_entregas">Entregas:</label>
+            <label class="field-label" for="velocidade11_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="velocidade11_entregas" name="velocidade11_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="velocidade11_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="velocidade11_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="velocidade11_acumuladas" name="velocidade11_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="velocidade11_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="velocidade11_tempo" name="velocidade11_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
@@ -349,33 +388,65 @@
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="material12_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="material12_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="material12_entradas" name="material12_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="material12_entregas">Entregas:</label>
+            <label class="field-label" for="material12_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="material12_entregas" name="material12_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="material12_acumuladas">Acumuladas:</label>
+            <label class="field-label" for="material12_acumuladas">- Número de exames pendentes (qualquer ano):</label>
             <input type="text" id="material12_acumuladas" name="material12_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="material12_tempo">- Tempo médio/estimado para realização do exame (em horas):</label>
+            <input type="text" id="material12_tempo" name="material12_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
+      
     </main>
     <footer>
       <p><a href="index.html">Voltar ao Menu</a></p>
     </footer>
   </div>
   <script>
+    // Atualiza dinamicamente os spans com a classe "ref-year" conforme o ano selecionado
     document.addEventListener("DOMContentLoaded", function(){
       const refYearSelect = document.getElementById("refYear");
       function updateRefYear() {
-        const selectedYear = refYearSelect.value;
-        document.querySelectorAll(".ref-year").forEach(span => { span.textContent = selectedYear; });
+        const selectedYear = refYearSelect ? refYearSelect.value : localStorage.getItem("anoSelecionado") || "2023";
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
       }
-      refYearSelect.addEventListener("change", updateRefYear);
+      if(refYearSelect){
+        refYearSelect.addEventListener("change", updateRefYear);
+      }
       updateRefYear();
+    });
+    
+    // Limita os inputs para apenas dígitos
+    document.querySelectorAll('input[type="text"]').forEach(function(input) {
+      input.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+      });
+    });
+    
+    // Atualiza a área estática com o ano e estado selecionados
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "2023";
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+    });
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "2023";
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = anoSelecionado;
+      });
     });
   </script>
 </body>

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Computação Forense - Questionário de Exames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      border-bottom: 2px solid #dadce0;
+      padding-bottom: 5px;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Computação Forense</h1>
+      <div class="static-info" id="staticInfo">
+        <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
+      </div>
+    </header>
+    <main>
+      <!-- Seção: Computação Forense - Natureza dos Exames -->
+      <section>
+        <h2>Computação Forense - Natureza dos Exames</h2>
+        <!-- Item 1: Exame Computacional Diverso -->
+        <div class="question">
+          <label class="exam-label" for="comp1">
+            1. Exame Computacional Diverso
+            <span class="info-icon" title="Análise geral de dispositivos e sistemas computacionais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp1_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp1_entradas" name="comp1_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp1_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp1_entregas" name="comp1_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp1_acumuladas">
+                       - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+              </label>
+              <input type="text" id="comp1_acumuladas" name="comp1_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp1_tempo">
+                       - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="comp1_tempo" name="comp1_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2: Exame em Mídias de Armazenamento Computacional -->
+        <div class="question">
+          <label class="exam-label" for="comp2">
+            2. Exame em Mídias de Armazenamento Computacional
+            <span class="info-icon" title="Investigação de discos rígidos, pen drives, cartões de memória e outras mídias.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp2_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp2_entradas" name="comp2_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp2_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp2_entregas" name="comp2_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp2_acumuladas">
+                       - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+              </label>
+              <input type="text" id="comp2_acumuladas" name="comp2_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp2_tempo">
+                       - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="comp2_tempo" name="comp2_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3: Exame em Local de Internet -->
+        <div class="question">
+          <label class="exam-label" for="comp3">
+            3. Exame em Local de Internet
+            <span class="info-icon" title="Análise de conexões e atividades digitais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp3_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp3_entradas" name="comp3_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp3_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
+              <input type="text" id="comp3_entregas" name="comp3_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp3_acumuladas">
+                       - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+              </label>
+              <input type="text" id="comp3_acumuladas" name="comp3_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp3_tempo">
+                       - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="comp3_tempo" name="comp3_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4: Exame em Local de Informática -->
+        <div class="question">
+          <label class="exam-label" for="comp4">
+            4. Exame em Local de Informática
+            <span class="info-icon" title="Análise em ambientes com dispositivos informáticos.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp4_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp4_entradas" name="comp4_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp4_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp4_entregas" name="comp4_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp4_acumuladas">
+                       - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+              </label>
+              <input type="text" id="comp4_acumuladas" name="comp4_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp4_tempo">
+                       - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="comp4_tempo" name="comp4_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5: Exame em Equipamento Computacional Portátil -->
+        <div class="question">
+          <label class="exam-label" for="comp5">
+            5. Exame em Equipamento Computacional Portátil
+            <span class="info-icon" title="Avaliação de laptops, tablets e outros dispositivos móveis.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp5_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp5_entradas" name="comp5_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp5_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp5_entregas" name="comp5_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp5_acumuladas">
+                       - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+              </label>
+              <input type="text" id="comp5_acumuladas" name="comp5_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp5_tempo">
+                       - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="comp5_tempo" name="comp5_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6: Exame em Sistemas Embarcados -->
+        <div class="question">
+          <label class="exam-label" for="comp6">
+            6. Exame em Sistemas Embarcados
+            <span class="info-icon" title="Investigação de dispositivos com sistemas integrados.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp6_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp6_entradas" name="comp6_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp6_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp6_entregas" name="comp6_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp6_acumuladas">
+                       - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+              </label>
+              <input type="text" id="comp6_acumuladas" name="comp6_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp6_tempo">
+                       - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="comp6_tempo" name="comp6_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item 7: Exame de Extração de Dados de Equipamento Eletrônico -->
+        <div class="question">
+            <label class="exam-label" for="comp7">
+            7. Exame de Extração de Dados de Equipamento Eletrônico
+            <span class="info-icon" title="Recuperação e preservação de informações de dispositivos digitais, garantindo a integridade das evidências para investigações criminais.">i</span>
+            </label>
+            <div class="field-group">
+            <div class="field">
+                <label class="field-label" for="comp7_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp7_entradas" name="comp7_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp7_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp7_entregas" name="comp7_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp7_acumuladas">
+                - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+                </label>
+                <input type="text" id="comp7_acumuladas" name="comp7_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp7_tempo">
+                - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+                </label>
+                <input type="text" id="comp7_tempo" name="comp7_tempo" maxlength="6" required>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Item 8: Exame De Análise De Conteúdo De Registros De Áudio -->
+        <div class="question">
+            <label class="exam-label" for="comp8">
+            8. Exame De Análise De Conteúdo De Registros De Áudio
+            <span class="info-icon" title="Avalia gravações de áudio para verificar autenticidade, identificar manipulações, melhorar a inteligibilidade e, se necessário, realizar identificação de locutores.">i</span>
+            </label>
+            <div class="field-group">
+            <div class="field">
+                <label class="field-label" for="comp8_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp8_entradas" name="comp8_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp8_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp8_entregas" name="comp8_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp8_acumuladas">
+                - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+                </label>
+                <input type="text" id="comp8_acumuladas" name="comp8_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp8_tempo">
+                - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+                </label>
+                <input type="text" id="comp8_tempo" name="comp8_tempo" maxlength="6" required>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Item 9: Exame De Análise De Conteúdo De Imagens -->
+        <div class="question">
+            <label class="exam-label" for="comp9">
+            9. Exame De Análise De Conteúdo De Imagens
+            <span class="info-icon" title="Analisa arquivos de fotos e vídeos para detectar edições, identificar indivíduos ou objetos e realizar restauração de imagens comprometidas.">i</span>
+            </label>
+            <div class="field-group">
+            <div class="field">
+                <label class="field-label" for="comp9_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp9_entradas" name="comp9_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp9_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp9_entregas" name="comp9_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp9_acumuladas">
+                - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+                </label>
+                <input type="text" id="comp9_acumuladas" name="comp9_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp9_tempo">
+                - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+                </label>
+                <input type="text" id="comp9_tempo" name="comp9_tempo" maxlength="6" required>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Item 10: Exame de Comparação de Locutores -->
+        <div class="question">
+            <label class="exam-label" for="comp10">
+            10. Exame de Comparação de Locutores
+            <span class="info-icon" title="Compara características vocais de diferentes gravações de áudio para verificar se pertencem ao mesmo locutor.">i</span>
+            </label>
+            <div class="field-group">
+            <div class="field">
+                <label class="field-label" for="comp10_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp10_entradas" name="comp10_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp10_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp10_entregas" name="comp10_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp10_acumuladas">
+                - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+                </label>
+                <input type="text" id="comp10_acumuladas" name="comp10_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp10_tempo">
+                - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+                </label>
+                <input type="text" id="comp10_tempo" name="comp10_tempo" maxlength="6" required>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Item 11: Exame de Comparação de Imagens Faciais -->
+        <div class="question">
+            <label class="exam-label" for="comp11">
+            11. Exame de Comparação de Imagens Faciais
+            <span class="info-icon" title="Realiza comparações de imagens faciais para identificar ou confirmar a identidade de indivíduos em registros audiovisuais.">i</span>
+            </label>
+            <div class="field-group">
+            <div class="field">
+                <label class="field-label" for="comp11_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp11_entradas" name="comp11_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp11_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp11_entregas" name="comp11_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp11_acumuladas">
+                - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+                </label>
+                <input type="text" id="comp11_acumuladas" name="comp11_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp11_tempo">
+                - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+                </label>
+                <input type="text" id="comp11_tempo" name="comp11_tempo" maxlength="6" required>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Item 12: Exame de Cálculo de Velocidade em Registros de Vídeo -->
+        <div class="question">
+            <label class="exam-label" for="comp12">
+            12. Exame de Cálculo de Velocidade em Registros de Vídeo
+            <span class="info-icon" title="Analisa registros de vídeo para calcular a velocidade de veículos ou outros objetos em movimento, auxiliando na reconstituição de eventos.">i</span>
+            </label>
+            <div class="field-group">
+            <div class="field">
+                <label class="field-label" for="comp12_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp12_entradas" name="comp12_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp12_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp12_entregas" name="comp12_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp12_acumuladas">
+                - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+                </label>
+                <input type="text" id="comp12_acumuladas" name="comp12_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp12_tempo">
+                - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+                </label>
+                <input type="text" id="comp12_tempo" name="comp12_tempo" maxlength="6" required>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Item 13: Exame de Adequabilidade de Material -->
+        <div class="question">
+            <label class="exam-label" for="comp13">
+            13. Exame de Adequabilidade de Material
+            <span class="info-icon" title="Avalia se um material audiovisual ou documental é adequado para determinada finalidade investigativa, verificando autenticidade e integridade.">i</span>
+            </label>
+            <div class="field-group">
+            <div class="field">
+                <label class="field-label" for="comp13_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp13_entradas" name="comp13_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp13_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+                <input type="text" id="comp13_entregas" name="comp13_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp13_acumuladas">
+                - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+                </label>
+                <input type="text" id="comp13_acumuladas" name="comp13_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="comp13_tempo">
+                - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+                </label>
+                <input type="text" id="comp13_tempo" name="comp13_tempo" maxlength="6" required>
+            </div>
+            </div>
+        </div>
+  
+        
+      </section>
+      
+      <!-- Seção: Computação Forense - Materiais Analisados -->
+      <section>
+        <h2>Computação Forense - Materiais Analisados</h2>
+        <!-- Item 1: ALL IN ONE PC -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat1">1. ALL IN ONE PC:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat1_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat1_entradas" name="comp_mat1_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat1_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat1_entregas" name="comp_mat1_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat1_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat1_pendentes" name="comp_mat1_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2: CÂMERA(S) DIGITAL(IS) -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat2">2. CÂMERA(S) DIGITAL(IS):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat2_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat2_entradas" name="comp_mat2_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat2_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat2_entregas" name="comp_mat2_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat2_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat2_pendentes" name="comp_mat2_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3: CARTÃO DE MEMÓRIA -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat3">3. CARTÃO DE MEMÓRIA:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat3_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat3_entradas" name="comp_mat3_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat3_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat3_entregas" name="comp_mat3_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat3_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat3_pendentes" name="comp_mat3_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4: CARTÃO SIM -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat4">4. CARTÃO SIM:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat4_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat4_entradas" name="comp_mat4_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat4_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat4_entregas" name="comp_mat4_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat4_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat4_pendentes" name="comp_mat4_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5: CELULAR(ES) -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat5">5. CELULAR(ES):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat5_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat5_entradas" name="comp_mat5_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat5_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat5_entregas" name="comp_mat5_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat5_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat5_pendentes" name="comp_mat5_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6: DESKTOP (CPU) -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat6">6. DESKTOP (CPU):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat6_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat6_entradas" name="comp_mat6_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat6_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat6_entregas" name="comp_mat6_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat6_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat6_pendentes" name="comp_mat6_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 7: DISCOS DE ARMAZENAMENTO (HD, SSD) -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat7">7. DISCOS DE ARMAZENAMENTO (HD, SSD):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat7_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat7_entradas" name="comp_mat7_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat7_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat7_entregas" name="comp_mat7_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat7_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat7_pendentes" name="comp_mat7_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 8: FITA MAGNÉTICA -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat8">8. FITA MAGNÉTICA:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat8_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat8_entradas" name="comp_mat8_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat8_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat8_entregas" name="comp_mat8_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat8_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat8_pendentes" name="comp_mat8_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 9: MÍDIAS ÓPTICAS (CD/DVD/BLURAY/...) -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat9">9. MÍDIAS ÓPTICAS (CD/DVD/BLURAY/...):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat9_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat9_entradas" name="comp_mat9_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat9_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat9_entregas" name="comp_mat9_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat9_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat9_pendentes" name="comp_mat9_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 10: NETBOOK/NETTOP/NOTEBOOK -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat10">10. NETBOOK/NETTOP/NOTEBOOK:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat10_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat10_entradas" name="comp_mat10_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat10_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat10_entregas" name="comp_mat10_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat10_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat10_pendentes" name="comp_mat10_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 11: PEN DRIVE -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat11">11. PEN DRIVE:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat11_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat11_entradas" name="comp_mat11_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat11_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat11_entregas" name="comp_mat11_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat11_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat11_pendentes" name="comp_mat11_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 12: SERVIDOR(ES)/STORAGE -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat12">12. SERVIDOR(ES)/STORAGE:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat12_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat12_entradas" name="comp_mat12_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat12_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat12_entregas" name="comp_mat12_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat12_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat12_pendentes" name="comp_mat12_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 13: TABLET -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat13">13. TABLET:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat13_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat13_entradas" name="comp_mat13_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat13_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat13_entregas" name="comp_mat13_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat13_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat13_pendentes" name="comp_mat13_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 14: VÍDEO GAME -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat14">14. VÍDEO GAME:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat14_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat14_entradas" name="comp_mat14_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat14_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat14_entregas" name="comp_mat14_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat14_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat14_pendentes" name="comp_mat14_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 15: EQUIPAMENTOS DE REDE -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat15">15. EQUIPAMENTOS DE REDE:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat15_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat15_entradas" name="comp_mat15_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat15_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat15_entregas" name="comp_mat15_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat15_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat15_pendentes" name="comp_mat15_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 16: IMPRESSORA(S) -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat16">16. IMPRESSORA(S):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat16_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat16_entradas" name="comp_mat16_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat16_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat16_entregas" name="comp_mat16_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat16_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat16_pendentes" name="comp_mat16_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 17: MONITOR(ES) -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat17">17. MONITOR(ES):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat17_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat17_entradas" name="comp_mat17_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat17_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat17_entregas" name="comp_mat17_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat17_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat17_pendentes" name="comp_mat17_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 18: SMART TV -->
+        <div class="question">
+          <label class="exam-label" for="comp_mat18">18. SMART TV:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="comp_mat18_entradas">       - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat18_entradas" name="comp_mat18_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat18_entregas">       - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="comp_mat18_entregas" name="comp_mat18_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comp_mat18_pendentes">
+                       - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="comp_mat18_pendentes" name="comp_mat18_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p><a href="index.html">Voltar ao Menu</a></p>
+    </footer>
+  </div>
+  <script>
+    // Atualiza dinamicamente os spans com a classe "ref-year" conforme o ano selecionado
+    document.addEventListener("DOMContentLoaded", function(){
+      const refYearSelect = document.getElementById("refYear");
+      function updateRefYear() {
+        const selectedYear = refYearSelect.value;
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
+      }
+      refYearSelect.addEventListener("change", updateRefYear);
+      updateRefYear();
+    });
+
+    document.querySelectorAll('input[type="text"]').forEach(function(input) {
+      input.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = anoSelecionado;
+      });
+
+      // Se desejar também exibir os dados estáticos:
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      if (staticInfo) {
+        staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+      }
+    });
+
+    </script>
+</body>
+</html>

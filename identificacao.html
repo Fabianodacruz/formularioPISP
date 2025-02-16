@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Identificação Humana - Exames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos Gerais */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+
+    /* Ícone de informação padronizado */
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Identificação Humana</h1>
+      <div class="static-info" id="staticInfo">
+        <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
+      </div>
+    </header>
+    <main>
+      <!-- Exame 1: Identificação Necropapiloscópica -->
+      <div class="question">
+        <label class="exam-label" for="ident2">
+          1. Identificação Necropapiloscópica
+          <span class="info-icon"
+            title="Utiliza impressões papilares ou digitais em cadáveres para identificação.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="ident2_entradas">- Número de Requisições em <span
+                class="ref-year">2023</span>:</label>
+            <input type="text" id="ident2_entradas" name="ident2_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ident2_entregas">- Laudos Expedidos (referente às requisições de <span
+                class="ref-year">2023</span>):</label>
+            <input type="text" id="ident2_entregas" name="ident2_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ident2_acumuladas">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="ident2_acumuladas" name="ident2_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Exame 2: Identificação Humana pelos Arcos Dentais -->
+      <div class="question">
+        <label class="exam-label" for="ident1">
+          2. Identificação Humana pelos Arcos Dentais
+          <span class="info-icon" title="Utiliza a arcada dentária para identificar vítimas.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="ident1_entradas">- Número de Requisições em <span
+                class="ref-year">2023</span>:</label>
+            <input type="text" id="ident1_entradas" name="ident1_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ident1_entregas">- Laudos Expedidos (referente às requisições de <span
+                class="ref-year">2023</span>):</label>
+            <input type="text" id="ident1_entregas" name="ident1_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ident1_acumuladas">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="ident1_acumuladas" name="ident1_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exame 3: Identificação por DNA -->
+      <div class="question">
+        <label class="exam-label" for="ident3">
+          3. Identificação por DNA
+          <span class="info-icon"
+            title="Utiliza a análise genética para identificar indivíduos, comparando amostras de DNA.">i</span>
+        </label>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="ident3_entradas">- Número de Requisições em <span
+                class="ref-year">2023</span>:</label>
+            <input type="text" id="ident3_entradas" name="ident3_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ident3_entregas">- Laudos Expedidos (referente às requisições de <span
+                class="ref-year">2023</span>):</label>
+            <input type="text" id="ident3_entregas" name="ident3_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ident3_acumuladas">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="ident3_acumuladas" name="ident3_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p><a href="index.html">Voltar ao Menu</a></p>
+    </footer>
+  </div>
+  <script>
+    // Atualiza dinamicamente os spans com a classe "ref-year" conforme o ano selecionado
+    document.addEventListener("DOMContentLoaded", function () {
+      const refYearSelect = document.getElementById("refYear");
+      function updateRefYear() {
+        const selectedYear = refYearSelect.value;
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
+      }
+      refYearSelect.addEventListener("change", updateRefYear);
+      updateRefYear();
+    });
+
+    document.querySelectorAll('input[type="text"]').forEach(function (input) {
+      input.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '');
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = anoSelecionado;
+      });
+
+      // Se desejar também exibir os dados estáticos:
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      if (staticInfo) {
+        staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+      }
+    });
+
+  </script>
+</body>
+
+</html>

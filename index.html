@@ -24,21 +24,80 @@
           <option value="2024">2024</option>
           <option value="2025">2025</option>
         </select>
+        <br>
+        
+        <!-- Nova combo de estados -->
+        <label for="estado">Estado:</label>
+        <select id="estado">
+          <option value="AC">AC</option>
+          <option value="AL">AL</option>
+          <option value="AP">AP</option>
+          <option value="AM">AM</option>
+          <option value="BA">BA</option>
+          <option value="CE">CE</option>
+          <option value="DF">DF</option>
+          <option value="ES">ES</option>
+          <option value="GO">GO</option>
+          <option value="MA">MA</option>
+          <option value="MT">MT</option>
+          <option value="MS">MS</option>
+          <option value="MG">MG</option>
+          <option value="PA">PA</option>
+          <option value="PB">PB</option>
+          <option value="PR">PR</option>
+          <option value="PE">PE</option>
+          <option value="PI">PI</option>
+          <option value="RJ">RJ</option>
+          <option value="RN">RN</option>
+          <option value="RS">RS</option>
+          <option value="RO">RO</option>
+          <option value="RR">RR</option>
+          <option value="SC">SC</option>
+          <option value="SP">SP</option>
+          <option value="SE">SE</option>
+          <option value="TO">TO</option>
+        </select>
       </div>
     </header>
     <nav>
       <ul>
-        <li><a href="medicina.html">Medicina Legal</a></li>
-        <li><a href="localistica.html">Exames de Localística</a></li>
-        <li><a href="laboratoriais.html">Exames Laboratoriais</a></li>
-        <li><a href="veiculares.html">Exames Veiculares</a></li>
-        <li><a href="genetica.html">Genética Molecular Forense</a></li>
-        <li><a href="documentoscopico.html">Documentoscópico, Grafotécnico, Contábil e AudioVisuais</a></li>
+        <li><a href="medicina.html" id="medicinaLink">Medicina Legal</a></li>
+        <li><a href="localistica.html" id="localisticaLink">Exames de Localística</a></li>
+        <li><a href="balistica.html" id="balisticaLink">Exames Balística</a></li>
+        <li><a href="computacao.html" id="computacaoLink">Exames Computação</a></li>
+        <li><a href="veiculares.html" id="veicularesLink">Exames Veiculares</a></li>
+        <li><a href="laboratoriais.html" id="laboratoriaisLink">Exames de Química e Toxicologia Forense</a></li>
+        <li><a href="genetica.html" id="geneticaLink">Genética Molecular Forense</a></li>
+        <li><a href="ambiental.html" id="ambientalLink">Exames Ambientais</a></li>
+        <li><a href="documentoscopico.html" id="documentoscopicoLink">Exames Documentoscópicos, Grafotécnicos, Contábeis</a></li>
+        <li><a href="identificacao.html" id="identificacaoLink">Identificação Humana</a></li>
       </ul>
     </nav>
     <main>
       <p>Selecione uma das seções acima para iniciar o questionário.</p>
     </main>
   </div>
+
+  <script>
+    document.getElementById("medicinaLink").addEventListener("click", function() {
+      const ano = document.getElementById("refYear").value;
+      const estado = document.getElementById("estado").value;
+      localStorage.setItem("anoSelecionado", ano);
+      localStorage.setItem("estadoSelecionado", estado);
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado");
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado");
+      
+      if (anoSelecionado) {
+        document.getElementById("refYear").value = anoSelecionado;
+      }
+      if (estadoSelecionado) {
+        document.getElementById("estado").value = estadoSelecionado;
+      }
+    });
+  </script>
+
 </body>
 </html>

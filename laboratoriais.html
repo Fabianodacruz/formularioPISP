@@ -2,28 +2,105 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Exames Laboratoriais - Questionário de Exames</title>
+  <title>Exames Laboratoriais de Química e Toxicologia - Questionário</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Roboto', sans-serif; background-color: #f5f5f5; margin: 0; padding: 0; }
-    .container { max-width: 900px; background: #fff; margin: 50px auto; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    section { margin-bottom: 40px; }
-    h2 { border-bottom: 2px solid #dadce0; padding-bottom: 5px; }
-    .question { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; }
-    .exam-label { font-size: 18px; font-weight: 500; }
-    .field-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
-    .field { display: flex; align-items: center; gap: 10px; }
-    .field-label { font-size: 16px; min-width: 320px; }
-    .field input[type="text"] { width: 6ch; padding: 5px; font-size: 16px; text-align: center; border: 1px solid #dadce0; border-radius: 4px; }
-    .info-icon { display: inline-block; width: 18px; height: 18px; background-color: #4285f4; color: #fff; border-radius: 50%; text-align: center; font-size: 12px; line-height: 18px; margin-left: 8px; }
-    a { color: #4285f4; text-decoration: none; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    main {
+      margin-bottom: 40px;
+    }
+    h2 {
+      border-bottom: 2px solid #dadce0;
+      padding-bottom: 5px;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .description {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Exames Laboratoriais</h1>
+      <h1>Exames Laboratoriais de Química e Toxicologia</h1>
       <div>
         <label for="refYear">Ano de Referência:</label>
         <select id="refYear">
@@ -34,487 +111,335 @@
       </div>
     </header>
     <main>
-      <!-- Seção 4.3.1 Balística Forense -->
-      <section>
-        <h2>4.3.1 Balística Forense - Natureza dos Exames</h2>
-        <!-- Balística: 5 itens -->
-        <!-- Item 1 -->
-        <div class="question">
-          <label class="exam-label" for="balistica1">1. Exame de Simples Constatação
-            <span class="info-icon" title="Verificação de números de série e características.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="balistica1_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="balistica1_exames" name="balistica1_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="balistica1_pecas">Peças analisadas:</label>
-              <input type="text" id="balistica1_pecas" name="balistica1_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="question">
-          <label class="exam-label" for="balistica2">2. Exame de Eficiência e Prestabilidade
-            <span class="info-icon" title="Testa o funcionamento da arma e das munições.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="balistica2_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="balistica2_exames" name="balistica2_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="balistica2_pecas">Peças analisadas:</label>
-              <input type="text" id="balistica2_pecas" name="balistica2_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="question">
-          <label class="exam-label" for="balistica3">3. Coleta de Padrão – SINAB
-            <span class="info-icon" title="Coleta de projéteis e estojos para o SINAB.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="balistica3_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="balistica3_exames" name="balistica3_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="balistica3_pecas">Peças analisadas:</label>
-              <input type="text" id="balistica3_pecas" name="balistica3_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 4 -->
-        <div class="question">
-          <label class="exam-label" for="balistica4">4. Exame de Inserção no BNPB
-            <span class="info-icon" title="Cadastro de armas ou munições no BNPB.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="balistica4_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="balistica4_exames" name="balistica4_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="balistica4_pecas">Peças analisadas:</label>
-              <input type="text" id="balistica4_pecas" name="balistica4_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 5 -->
-        <div class="question">
-          <label class="exam-label" for="balistica5">5. Exame de Confronto Balístico
-            <span class="info-icon" title="Compara projéteis e estojos para identificar a arma utilizada.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="balistica5_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="balistica5_exames" name="balistica5_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="balistica5_pecas">Peças analisadas:</label>
-              <input type="text" id="balistica5_pecas" name="balistica5_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <h2>4.3.1 Balística Forense - Peças Analisadas</h2>
-        <!-- 18 itens -->
-        <!-- Item 1 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece1">1. Arma(s) de Choque:</label>
+      <!-- Item 1: Exame Residuográfico -->
+      <div class="question">
+        <label class="exam-label" for="qt1">
+          1. Exame Residuográfico
+          <span class="info-icon" title="Detecta resíduos de disparo de arma de fogo em superfícies como mãos ou roupas, identificando elementos como pólvora, chumbo e antimônio.">i</span>
+        </label>
+        <p class="description">Detecta resíduos de disparo de arma de fogo em superfícies como mãos ou roupas, identificando elementos como pólvora, chumbo e antimônio.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="balistica_piece1_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece1_qty" name="balistica_piece1_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt1_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt1_entradas" name="qt1_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece2">2. Arma(s) de Pressão:</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece2_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece2_qty" name="balistica_piece2_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt1_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt1_entregas" name="qt1_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece3">3. Carabina(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece3_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece3_qty" name="balistica_piece3_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt1_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt1_pendentes" name="qt1_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 4 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece4">4. Carregador(es):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece4_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece4_qty" name="balistica_piece4_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt1_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt1_tempo" name="qt1_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 5 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece5">5. Cartucho(s):</label>
+      </div>
+
+      <!-- Item 2: Exame Toxicológico -->
+      <div class="question">
+        <label class="exam-label" for="qt2">
+          2. Exame Toxicológico
+          <span class="info-icon" title="Analisa a presença de substâncias tóxicas em amostras biológicas ou materiais coletados, em casos de envenenamento ou exposição química.">i</span>
+        </label>
+        <p class="description">Analisa a presença de substâncias tóxicas em amostras biológicas ou materiais coletados, em casos de envenenamento ou exposição química.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="balistica_piece5_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece5_qty" name="balistica_piece5_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt2_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt2_entradas" name="qt2_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 6 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece6">6. Espingarda(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece6_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece6_qty" name="balistica_piece6_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt2_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt2_entregas" name="qt2_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 7 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece7">7. Espoleta(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece7_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece7_qty" name="balistica_piece7_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt2_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt2_pendentes" name="qt2_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 8 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece8">8. Estojo(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece8_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece8_qty" name="balistica_piece8_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt2_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt2_tempo" name="qt2_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 9 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece9">9. Fuzil(is):</label>
+      </div>
+
+      <!-- Item 3: Exame de Drogas Ilícitas -->
+      <div class="question">
+        <label class="exam-label" for="qt3">
+          3. Exame de Drogas Ilícitas
+          <span class="info-icon" title="Identifica e quantifica a presença de drogas ilícitas em materiais apreendidos, utilizando técnicas como cromatografia e espectrometria.">i</span>
+        </label>
+        <p class="description">Identifica e quantifica a presença de drogas ilícitas em materiais apreendidos, utilizando técnicas como cromatografia e espectrometria.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="balistica_piece9_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece9_qty" name="balistica_piece9_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt3_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt3_entradas" name="qt3_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 10 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece10">10. Garrucha(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece10_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece10_qty" name="balistica_piece10_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt3_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt3_entregas" name="qt3_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 11 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece11">11. Jet Loader:</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece11_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece11_qty" name="balistica_piece11_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt3_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt3_pendentes" name="qt3_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 12 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece12">12. Metralhadora(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece12_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece12_qty" name="balistica_piece12_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt3_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt3_tempo" name="qt3_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 13 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece13">13. Pistola(s):</label>
+      </div>
+
+      <!-- Item 4: Exame de Produtos Químicos Controlados -->
+      <div class="question">
+        <label class="exam-label" for="qt4">
+          4. Exame de Produtos Químicos Controlados
+          <span class="info-icon" title="Determina se substâncias apreendidas estão incluídas em listas de controle, como precursores químicos usados na produção de drogas ou explosivos.">i</span>
+        </label>
+        <p class="description">Determina se substâncias apreendidas estão incluídas em listas de controle, como precursores químicos usados na produção de drogas ou explosivos.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="balistica_piece13_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece13_qty" name="balistica_piece13_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt4_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt4_entradas" name="qt4_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 14 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece14">14. Pistoleta(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece14_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece14_qty" name="balistica_piece14_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt4_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt4_entregas" name="qt4_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 15 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece15">15. Pólvora:</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece15_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece15_qty" name="balistica_piece15_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt4_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt4_pendentes" name="qt4_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 16 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece16">16. Projéteis:</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece16_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece16_qty" name="balistica_piece16_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt4_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt4_tempo" name="qt4_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 17 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece17">17. Revólver(es):</label>
+      </div>
+
+      <!-- Item 5: Exame de Substâncias em Amostras Biológicas -->
+      <div class="question">
+        <label class="exam-label" for="qt5">
+          5. Exame de Substâncias em Amostras Biológicas
+          <span class="info-icon" title="Analisa amostras de sangue, urina ou outros materiais biológicos para detectar substâncias como álcool, drogas ou venenos.">i</span>
+        </label>
+        <p class="description">Analisa amostras de sangue, urina ou outros materiais biológicos para detectar substâncias como álcool, drogas ou venenos.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="balistica_piece17_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece17_qty" name="balistica_piece17_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt5_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt5_entradas" name="qt5_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 18 -->
-        <div class="question">
-          <label class="exam-label" for="balistica_piece18">18. Submetralhadora(s):</label>
           <div class="field">
-            <label class="field-label" for="balistica_piece18_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="balistica_piece18_qty" name="balistica_piece18_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt5_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt5_entregas" name="qt5_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-      </section>
-      <section>
-        <h2>4.3.2 Computação Forense - Natureza dos Exames</h2>
-        <!-- Computação: 6 itens -->
-        <!-- Item 1 -->
-        <div class="question">
-          <label class="exam-label" for="comp1">1. Exame Computacional Diverso:
-            <span class="info-icon" title="Análise geral de dispositivos e sistemas.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="comp1_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="comp1_exames" name="comp1_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="comp1_pecas">Peças analisadas:</label>
-              <input type="text" id="comp1_pecas" name="comp1_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="question">
-          <label class="exam-label" for="comp2">2. Exame em Mídias de Armazenamento Computacional:
-            <span class="info-icon" title="Discos, pen drives, etc.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="comp2_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="comp2_exames" name="comp2_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="comp2_pecas">Peças analisadas:</label>
-              <input type="text" id="comp2_pecas" name="comp2_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="question">
-          <label class="exam-label" for="comp3">3. Exame em Local de Internet:
-            <span class="info-icon" title="Análise de conexões e atividades digitais.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="comp3_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="comp3_exames" name="comp3_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="comp3_pecas">Peças analisadas:</label>
-              <input type="text" id="comp3_pecas" name="comp3_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 4 -->
-        <div class="question">
-          <label class="exam-label" for="comp4">4. Exame em Local de Informática:
-            <span class="info-icon" title="Análise em ambientes com dispositivos informáticos.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="comp4_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="comp4_exames" name="comp4_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="comp4_pecas">Peças analisadas:</label>
-              <input type="text" id="comp4_pecas" name="comp4_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 5 -->
-        <div class="question">
-          <label class="exam-label" for="comp5">5. Exame em Equipamento Computacional Portátil:
-            <span class="info-icon" title="Laptops, tablets, etc.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="comp5_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="comp5_exames" name="comp5_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="comp5_pecas">Peças analisadas:</label>
-              <input type="text" id="comp5_pecas" name="comp5_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-        <!-- Item 6 -->
-        <div class="question">
-          <label class="exam-label" for="comp6">6. Exame em Sistemas Embarcados:
-            <span class="info-icon" title="Dispositivos com sistemas integrados.">i</span>
-          </label>
-          <div class="field-group">
-            <div class="field">
-              <label class="field-label" for="comp6_exames">Exames realizados (<span class="ref-year">2023</span>):</label>
-              <input type="text" id="comp6_exames" name="comp6_exames" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="comp6_pecas">Peças analisadas:</label>
-              <input type="text" id="comp6_pecas" name="comp6_pecas" maxlength="6" pattern="\d{1,6}" required>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <h2>4.3.2 Computação Forense - Materiais Analisados</h2>
-        <!-- Computação – 18 itens -->
-        <!-- Item 1 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat1">1. ALL IN ONE PC:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat1_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat1_qty" name="comp_mat1_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt5_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt5_pendentes" name="qt5_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat2">2. CÂMERA(S) DIGITAL(IS):</label>
           <div class="field">
-            <label class="field-label" for="comp_mat2_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat2_qty" name="comp_mat2_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt5_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt5_tempo" name="qt5_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 3 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat3">3. CARTÃO DE MEMÓRIA:</label>
+      </div>
+
+      <!-- Item 6: Exame de Resíduos Químicos em Local de Crime -->
+      <div class="question">
+        <label class="exam-label" for="qt6">
+          6. Exame de Resíduos Químicos em Local de Crime
+          <span class="info-icon" title="Examina vestígios de produtos químicos encontrados em locais de crime para identificar substâncias relacionadas ao evento investigado.">i</span>
+        </label>
+        <p class="description">Examina vestígios de produtos químicos encontrados em locais de crime para identificar substâncias relacionadas ao evento investigado.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="comp_mat3_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat3_qty" name="comp_mat3_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt6_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt6_entradas" name="qt6_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 4 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat4">4. CARTÃO SIM:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat4_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat4_qty" name="comp_mat4_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt6_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt6_entregas" name="qt6_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 5 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat5">5. CELULAR(ES):</label>
           <div class="field">
-            <label class="field-label" for="comp_mat5_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat5_qty" name="comp_mat5_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt6_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt6_pendentes" name="qt6_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 6 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat6">6. DESKTOP (CPU):</label>
           <div class="field">
-            <label class="field-label" for="comp_mat6_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat6_qty" name="comp_mat6_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt6_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt6_tempo" name="qt6_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 7 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat7">7. DISCOS DE ARMAZENAMENTO (HD, SSD):</label>
+      </div>
+
+      <!-- Item 7: Exame de Explosivos -->
+      <div class="question">
+        <label class="exam-label" for="qt7">
+          7. Exame de Explosivos
+          <span class="info-icon" title="Avalia a composição química de materiais explosivos encontrados em locais de crime, buscando determinar sua origem e potencial de explosão.">i</span>
+        </label>
+        <p class="description">Avalia a composição química de materiais explosivos encontrados em locais de crime, buscando determinar sua origem e potencial de explosão.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="comp_mat7_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat7_qty" name="comp_mat7_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt7_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt7_entradas" name="qt7_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 8 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat8">8. FITA MAGNÉTICA:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat8_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat8_qty" name="comp_mat8_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt7_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt7_entregas" name="qt7_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 9 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat9">9. MÍDIAS ÓPTICAS (CD/DVD/BLURAY/...):</label>
           <div class="field">
-            <label class="field-label" for="comp_mat9_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat9_qty" name="comp_mat9_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt7_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt7_pendentes" name="qt7_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 10 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat10">10. NETBOOK/NETTOP/NOTEBOOK:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat10_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat10_qty" name="comp_mat10_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt7_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt7_tempo" name="qt7_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 11 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat11">11. PEN DRIVE:</label>
+      </div>
+
+      <!-- Item 8: Exame de Poluentes Ambientais -->
+      <div class="question">
+        <label class="exam-label" for="qt8">
+          8. Exame de Poluentes Ambientais
+          <span class="info-icon" title="Investiga a presença de poluentes ou contaminantes em amostras de água, solo ou ar, em crimes ambientais.">i</span>
+        </label>
+        <p class="description">Investiga a presença de poluentes ou contaminantes em amostras de água, solo ou ar, em crimes ambientais.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="comp_mat11_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat11_qty" name="comp_mat11_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt8_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt8_entradas" name="qt8_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 12 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat12">12. SERVIDOR(ES)/STORAGE:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat12_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat12_qty" name="comp_mat12_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt8_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt8_entregas" name="qt8_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 13 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat13">13. TABLET:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat13_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat13_qty" name="comp_mat13_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt8_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt8_pendentes" name="qt8_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 14 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat14">14. VÍDEO GAME:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat14_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat14_qty" name="comp_mat14_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt8_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt8_tempo" name="qt8_tempo" maxlength="6" required>
           </div>
         </div>
-        <!-- Item 15 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat15">15. EQUIPAMENTOS DE REDE:</label>
+      </div>
+
+      <!-- Item 9: Exame de Dosagem/Triagem Toxicológica -->
+      <div class="question">
+        <label class="exam-label" for="qt9">
+          9. Exame de Dosagem/Triagem Toxicológica
+          <span class="info-icon" title="Avalia a presença e a concentração de substâncias tóxicas ou psicoativas em amostras biológicas, utilizando técnicas como cromatografia e espectrometria.">i</span>
+        </label>
+        <p class="description">Avalia a presença e a concentração de substâncias tóxicas ou psicoativas em amostras biológicas, utilizando técnicas como cromatografia e espectrometria.</p>
+        <div class="field-group">
           <div class="field">
-            <label class="field-label" for="comp_mat15_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat15_qty" name="comp_mat15_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt9_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt9_entradas" name="qt9_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 16 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat16">16. IMPRESSORA(S):</label>
           <div class="field">
-            <label class="field-label" for="comp_mat16_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat16_qty" name="comp_mat16_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt9_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt9_entregas" name="qt9_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 17 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat17">17. MONITOR(ES):</label>
           <div class="field">
-            <label class="field-label" for="comp_mat17_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat17_qty" name="comp_mat17_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt9_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt9_pendentes" name="qt9_pendentes" maxlength="6" pattern="\d{1,6}" required>
           </div>
-        </div>
-        <!-- Item 18 -->
-        <div class="question">
-          <label class="exam-label" for="comp_mat18">18. SMART TV:</label>
           <div class="field">
-            <label class="field-label" for="comp_mat18_qty">Quantidade (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="comp_mat18_qty" name="comp_mat18_qty" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="qt9_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt9_tempo" name="qt9_tempo" maxlength="6" required>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- Item 10: Exame de Dosagem/Triagem Alcoólica -->
+      <div class="question">
+        <label class="exam-label" for="qt10">
+          10. Exame de Dosagem/Triagem Alcoólica
+          <span class="info-icon" title="Determina o nível de álcool em amostras biológicas, como sangue ou ar exalado, para verificar intoxicação alcoólica em investigações criminais ou acidentes de trânsito.">i</span>
+        </label>
+        <p class="description">Determina o nível de álcool em amostras biológicas, como sangue ou ar exalado, para verificar intoxicação alcoólica em investigações criminais ou acidentes de trânsito.</p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="qt10_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt10_entradas" name="qt10_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="qt10_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="qt10_entregas" name="qt10_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="qt10_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="qt10_pendentes" name="qt10_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="qt10_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="qt10_tempo" name="qt10_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
       <p><a href="index.html">Voltar ao Menu</a></p>
@@ -525,7 +450,9 @@
       const refYearSelect = document.getElementById("refYear");
       function updateRefYear() {
         const selectedYear = refYearSelect.value;
-        document.querySelectorAll(".ref-year").forEach(span => { span.textContent = selectedYear; });
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
       }
       refYearSelect.addEventListener("change", updateRefYear);
       updateRefYear();

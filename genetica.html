@@ -2,132 +2,249 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Genética Molecular Forense - Questionário de Exames</title>
+  <title>Genética Molecular Forense</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Roboto', sans-serif; background-color: #f5f5f5; margin: 0; padding: 0; }
-    .container { max-width: 900px; background: #fff; margin: 50px auto; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .question { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; }
-    .exam-label { font-size: 18px; font-weight: 500; }
-    .field-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
-    .field { display: flex; align-items: center; gap: 10px; }
-    .field-label { font-size: 16px; min-width: 320px; }
-    .field input[type="text"] { width: 6ch; padding: 5px; font-size: 16px; text-align: center; border: 1px solid #dadce0; border-radius: 4px; }
-    .info-icon { display: inline-block; width: 18px; height: 18px; background-color: #4285f4; color: #fff; border-radius: 50%; text-align: center; font-size: 12px; line-height: 18px; margin-left: 8px; }
-    a { color: #4285f4; text-decoration: none; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .description {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+    }
+    footer a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Genética Molecular Forense</h1>
-      <div>
-        <label for="refYear">Ano de Referência:</label>
-        <select id="refYear">
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-        </select>
-      </div>
     </header>
     <main>
       <!-- Item 1: Pesquisa de Sangue -->
       <div class="question">
-        <label class="exam-label" for="genetica1">1. Pesquisa de Sangue
+        <label class="exam-label" for="gen1">
+          1. Pesquisa de Sangue
           <span class="info-icon" title="Detecta a presença de sangue em amostras coletadas em locais de crime, utilizando testes químicos e imunológicos para confirmação.">i</span>
         </label>
+        <p class="description">Detecta a presença de sangue em amostras coletadas em locais de crime, utilizando testes químicos e imunológicos para confirmação.</p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="genetica1_entradas">Entradas (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="genetica1_entradas" name="genetica1_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen1_entradas">- Número de Requisições em <span class="ref-year">N/D</span>:</label>
+            <input type="text" id="gen1_entradas" name="gen1_entradas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica1_entregas">Entregas:</label>
-            <input type="text" id="genetica1_entregas" name="genetica1_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen1_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">N/D</span>):</label>
+            <input type="text" id="gen1_entregas" name="gen1_entregas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica1_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="genetica1_entregas_anterior" name="genetica1_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen1_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="gen1_pendentes" name="gen1_pendentes" maxlength="6" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="gen1_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="gen1_tempo" name="gen1_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
+
       <!-- Item 2: Pesquisa de Sêmen -->
       <div class="question">
-        <label class="exam-label" for="genetica2">2. Pesquisa de Sêmen
+        <label class="exam-label" for="gen2">
+          2. Pesquisa de Sêmen
           <span class="info-icon" title="Identifica a presença de sêmen em vestígios coletados, geralmente em casos de crimes sexuais, por meio de técnicas bioquímicas e genéticas.">i</span>
         </label>
+        <p class="description">Identifica a presença de sêmen em vestígios coletados, geralmente em casos de crimes sexuais, por meio de técnicas bioquímicas e genéticas.</p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="genetica2_entradas">Entradas (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="genetica2_entradas" name="genetica2_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen2_entradas">- Número de Requisições em <span class="ref-year">N/D</span>:</label>
+            <input type="text" id="gen2_entradas" name="gen2_entradas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica2_entregas">Entregas:</label>
-            <input type="text" id="genetica2_entregas" name="genetica2_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen2_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">N/D</span>):</label>
+            <input type="text" id="gen2_entregas" name="gen2_entregas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica2_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="genetica2_entregas_anterior" name="genetica2_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen2_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="gen2_pendentes" name="gen2_pendentes" maxlength="6" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="gen2_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="gen2_tempo" name="gen2_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
+
       <!-- Item 3: Exame Genético -->
       <div class="question">
-        <label class="exam-label" for="genetica3">3. Exame Genético
-          <span class="info-icon" title="Analisa o perfil genético de amostras biológicas para identificação de indivíduos, vinculação a suspeitos ou exclusão de perfis.">i</span>
+        <label class="exam-label" for="gen3">
+          3. Exame Genético
+          <span class="info-icon" title="Analisa o perfil genético de amostras biológicas para identificação de indivíduos, vinculação a suspeitos ou vítimas e exclusão de perfis.">i</span>
         </label>
+        <p class="description">Analisa o perfil genético de amostras biológicas para identificação de indivíduos, vinculação a suspeitos ou vítimas e exclusão de perfis.</p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="genetica3_entradas">Entradas (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="genetica3_entradas" name="genetica3_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen3_entradas">- Número de Requisições em <span class="ref-year">N/D</span>:</label>
+            <input type="text" id="gen3_entradas" name="gen3_entradas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica3_entregas">Entregas:</label>
-            <input type="text" id="genetica3_entregas" name="genetica3_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen3_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">N/D</span>):</label>
+            <input type="text" id="gen3_entregas" name="gen3_entregas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica3_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="genetica3_entregas_anterior" name="genetica3_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen3_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="gen3_pendentes" name="gen3_pendentes" maxlength="6" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="gen3_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="gen3_tempo" name="gen3_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
+
       <!-- Item 4: Exame Genético em Amostras de RIBPG -->
       <div class="question">
-        <label class="exam-label" for="genetica4">4. Exame Genético em Amostras de RIBPG
-          <span class="info-icon" title="Realiza a análise de DNA de amostras inseridas na Rede Integrada de Bancos de Perfis Genéticos (RIBPG).">i</span>
+        <label class="exam-label" for="gen4">
+          4. Exame Genético em Amostras de RIBPG
+          <span class="info-icon" title="Realiza a análise de DNA de amostras inseridas na Rede Integrada de Bancos de Perfis Genéticos (RIBPG), permitindo comparações com perfis armazenados.">i</span>
         </label>
+        <p class="description">Realiza a análise de DNA de amostras inseridas na Rede Integrada de Bancos de Perfis Genéticos (RIBPG), permitindo comparações com perfis armazenados.</p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="genetica4_entradas">Entradas (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="genetica4_entradas" name="genetica4_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen4_entradas">- Número de Requisições em <span class="ref-year">N/D</span>:</label>
+            <input type="text" id="gen4_entradas" name="gen4_entradas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica4_entregas">Entregas:</label>
-            <input type="text" id="genetica4_entregas" name="genetica4_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen4_entregas">- Laudos Expedidos (referente às requisições de <span class="ref-year">N/D</span>):</label>
+            <input type="text" id="gen4_entregas" name="gen4_entregas" maxlength="6" required>
           </div>
           <div class="field">
-            <label class="field-label" for="genetica4_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="genetica4_entregas_anterior" name="genetica4_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="gen4_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="gen4_pendentes" name="gen4_pendentes" maxlength="6" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="gen4_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="gen4_tempo" name="gen4_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
+
     </main>
     <footer>
       <p><a href="index.html">Voltar ao Menu</a></p>
     </footer>
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      const refYearSelect = document.getElementById("refYear");
-      function updateRefYear() {
-        const selectedYear = refYearSelect.value;
-        document.querySelectorAll(".ref-year").forEach(span => {
-          span.textContent = selectedYear;
-        });
-      }
-      refYearSelect.addEventListener("change", updateRefYear);
-      updateRefYear();
+    // Se desejar atualizar spans com a classe ref-year, use localStorage ou outra lógica.
+    // Exemplo de substituição simples "N/D" usando localStorage:
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      // Substitui o texto "N/D" dentro de spans com a classe ref-year:
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = anoSelecionado;
+      });
     });
   </script>
 </body>

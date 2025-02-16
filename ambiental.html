@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Perícias Ambientais - Questionário de Exames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    main {
+      margin-bottom: 40px;
+    }
+    h2 {
+      border-bottom: 2px solid #dadce0;
+      padding-bottom: 5px;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .description {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Perícias Ambientais</h1>
+      <div class="static-info" id="staticInfo">
+        <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
+      </div>
+    </header>
+    <main>
+      <!-- Item 1: Exame de Necropsia em Cadáver Animal -->
+      <div class="question">
+        <label class="exam-label" for="amb1">
+          1. Exame de Necropsia em Cadáver Animal
+          <span class="info-icon" title="Realiza necropsia em animais para determinar a causa da morte, verificando sinais de envenenamento, maus-tratos ou outros fatores que possam caracterizar crime ambiental.">i</span>
+        </label>
+        <p class="description">
+          Realiza necropsia em animais para determinar a causa da morte, verificando sinais de envenenamento, maus-tratos ou outros fatores que possam caracterizar crime ambiental.
+        </p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="amb1_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb1_entradas" name="amb1_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb1_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb1_entregas" name="amb1_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb1_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="amb1_pendentes" name="amb1_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb1_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="- Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="amb1_tempo" name="amb1_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Item 2: Exame de Identificação de Espécie Vegetal -->
+      <div class="question">
+        <label class="exam-label" for="amb2">
+          2. Exame de Identificação de Espécie Vegetal
+          <span class="info-icon" title="Identifica e classifica espécies vegetais apreendidas ou encontradas em locais de crime, verificando se pertencem a espécies protegidas ou ameaçadas de extinção.">i</span>
+        </label>
+        <p class="description">
+          Identifica e classifica espécies vegetais apreendidas ou encontradas em locais de crime, verificando se pertencem a espécies protegidas ou ameaçadas de extinção.
+        </p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="amb2_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb2_entradas" name="amb2_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb2_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb2_entregas" name="amb2_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb2_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="amb2_pendentes" name="amb2_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb2_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="- Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="amb2_tempo" name="amb2_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Item 3: Exame de Identificação de Espécie da Fauna -->
+      <div class="question">
+        <label class="exam-label" for="amb3">
+          3. Exame de Identificação de Espécie da Fauna
+          <span class="info-icon" title="Analisa vestígios biológicos para determinar a espécie de um animal envolvido em um crime ambiental, verificando se pertence a fauna silvestre protegida.">i</span>
+        </label>
+        <p class="description">
+          Analisa vestígios biológicos para determinar a espécie de um animal envolvido em um crime ambiental, verificando se pertence a fauna silvestre protegida.
+        </p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="amb3_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb3_entradas" name="amb3_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb3_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb3_entregas" name="amb3_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb3_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="amb3_pendentes" name="amb3_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb3_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="- Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="amb3_tempo" name="amb3_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Item 4: Exame de Material Geológico e Arqueológico -->
+      <div class="question">
+        <label class="exam-label" for="amb4">
+          4. Exame de Material Geológico e Arqueológico
+          <span class="info-icon" title="Examina materiais geológicos e arqueológicos encontrados em locais de crime para verificar impactos ambientais e autenticidade de artefatos apreendidos.">i</span>
+        </label>
+        <p class="description">
+          Examina materiais geológicos e arqueológicos encontrados em locais de crime para verificar impactos ambientais e autenticidade de artefatos apreendidos.
+        </p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="amb4_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb4_entradas" name="amb4_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb4_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb4_entregas" name="amb4_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb4_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="amb4_pendentes" name="amb4_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb4_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="- Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="amb4_tempo" name="amb4_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Item 5: Exame em Local de Crimes Contra o Meio Ambiente -->
+      <div class="question">
+        <label class="exam-label" for="amb5">
+          5. Exame em Local de Crimes Contra o Meio Ambiente
+          <span class="info-icon" title="Realiza inspeções em locais onde há suspeita de crimes ambientais, como desmatamento ilegal, poluição hídrica e tráfico de fauna e flora.">i</span>
+        </label>
+        <p class="description">
+          Realiza inspeções em locais onde há suspeita de crimes ambientais, como desmatamento ilegal, poluição hídrica e tráfico de fauna e flora.
+        </p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="amb5_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb5_entradas" name="amb5_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb5_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb5_entregas" name="amb5_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb5_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="amb5_pendentes" name="amb5_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb5_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="- Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="amb5_tempo" name="amb5_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Item 6: Exame em Material Relacionado a Crime Ambiental -->
+      <div class="question">
+        <label class="exam-label" for="amb6">
+          6. Exame em Material Relacionado a Crime Ambiental
+          <span class="info-icon" title="Analisa materiais apreendidos relacionados a crimes ambientais, como madeira extraída ilegalmente, produtos de origem animal ou vegetal e resíduos poluentes.">i</span>
+        </label>
+        <p class="description">
+          Analisa materiais apreendidos relacionados a crimes ambientais, como madeira extraída ilegalmente, produtos de origem animal ou vegetal e resíduos poluentes.
+        </p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="amb6_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb6_entradas" name="amb6_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb6_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb6_entregas" name="amb6_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb6_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="amb6_pendentes" name="amb6_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb6_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="- Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="amb6_tempo" name="amb6_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Item 7: Exame de Geotecnia Ambiental -->
+      <div class="question">
+        <label class="exam-label" for="amb7">
+          7. Exame de Geotecnia Ambiental
+          <span class="info-icon" title="Avalia aspectos geotécnicos de áreas impactadas por atividades ilegais, verificando riscos de erosão, contaminação do solo e impactos estruturais no meio ambiente.">i</span>
+        </label>
+        <p class="description">
+          Avalia aspectos geotécnicos de áreas impactadas por atividades ilegais, verificando riscos de erosão, contaminação do solo e impactos estruturais no meio ambiente.
+        </p>
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="amb7_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb7_entradas" name="amb7_entradas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb7_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="amb7_entregas" name="amb7_entregas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb7_pendentes">
+              - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+            </label>
+            <input type="text" id="amb7_pendentes" name="amb7_pendentes" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="amb7_tempo">
+              - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="- Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="amb7_tempo" name="amb7_tempo" maxlength="6" required>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+    <footer>
+      <p><a href="index.html">Voltar ao Menu</a></p>
+    </footer>
+  </div>
+  <script>
+    // Atualiza dinamicamente os spans com a classe "ref-year" conforme o ano selecionado
+    document.addEventListener("DOMContentLoaded", function(){
+      const refYearSelect = document.getElementById("refYear");
+      function updateRefYear() {
+        const selectedYear = refYearSelect.value;
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
+      }
+      refYearSelect.addEventListener("change", updateRefYear);
+      updateRefYear();
+    });
+
+    document.querySelectorAll('input[type="text"]').forEach(function(input) {
+      input.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = anoSelecionado;
+      });
+
+      // Se desejar também exibir os dados estáticos:
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      if (staticInfo) {
+        staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+      }
+    });
+
+    </script>
+</body>
+</html>

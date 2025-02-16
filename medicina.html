@@ -2,272 +2,576 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Medicina Legal - Questionário de Exames</title>
+  <title>Medicina Legal - Exames</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Roboto', sans-serif; background-color: #f5f5f5; margin: 0; padding: 0; }
-    .container { max-width: 900px; background: #fff; margin: 50px auto; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .question { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; }
-    .exam-label { font-size: 18px; font-weight: 500; }
-    .field-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
-    .field { display: flex; align-items: center; gap: 10px; }
-    .field-label { font-size: 16px; min-width: 320px; }
-    .field input[type="text"] { width: 6ch; padding: 5px; font-size: 16px; text-align: center; border: 1px solid #dadce0; border-radius: 4px; }
-    .info-icon { display: inline-block; width: 18px; height: 18px; background-color: #4285f4; color: #fff; border-radius: 50%; text-align: center; font-size: 12px; line-height: 18px; margin-left: 8px; }
-    a { color: #4285f4; text-decoration: none; }
+    /* Estilos Gerais */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .description {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+    /* Ícone de informação padronizado */
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+    }
+    footer a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Medicina Legal</h1>
-      <div>
-        <label for="refYear">Ano de Referência:</label>
-        <select id="refYear">
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-        </select>
+      <div class="static-info" id="staticInfo">
+        <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
       </div>
     </header>
     <main>
       <!-- Item 1 -->
       <div class="question">
-        <label class="exam-label" for="exame1">1. Exame de Lesões Corporais (Corpo de Delito)
-          <span class="info-icon" title="Avaliação física para verificar lesões.">i</span>
+        <label class="exam-label" for="exame1">
+          1.Exame de Lesões Corporais (Corpo de Delito)
+          <span class="info-icon" title="Avaliação física de uma pessoa para verificar a presença, a gravidade e a natureza das lesões, em conformidade com o artigo 129 do Código Penal. É realizado em supostas vítimas de agressões ou acidentes.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame1_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame1_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame1_entradas" name="exame1_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame1_entregas">Entregas:</label>
+            <label class="field-label" for="exame1_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame1_entregas" name="exame1_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame1_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame1_entregas_anterior" name="exame1_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame1_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame1_acumuladas" name="exame1_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame1_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame1_tempo" name="exame1_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 2 -->
       <div class="question">
-        <label class="exam-label" for="exame2">2. Exame de Lesões Corporais "Ad Cautelam"
-          <span class="info-icon" title="Exame preventivo para verificar lesões.">i</span>
+        <label class="exam-label" for="exame2">
+          2. Exame de Lesões Corporais 'Ad Cautelam'
+          <span class="info-icon" title="Exame preventivo, geralmente realizado em pessoas detidas ou envolvidas em ocorrências policiais, para registrar a ausência ou presença de lesões no momento da prisão ou detenção.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame2_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame2_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame2_entradas" name="exame2_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame2_entregas">Entregas:</label>
+            <label class="field-label" for="exame2_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame2_entregas" name="exame2_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame2_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame2_entregas_anterior" name="exame2_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame2_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame2_acumuladas" name="exame2_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame2_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame2_tempo" name="exame2_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 3 -->
       <div class="question">
-        <label class="exam-label" for="exame3">3. Exame de Lesões Corporais (DPVAT)
-          <span class="info-icon" title="Exame para comprovar lesões decorrentes de acidentes de trânsito.">i</span>
+        <label class="exam-label" for="exame3">
+          3. Exame de Lesões Corporais (DPVAT)
+          <span class="info-icon" title="Exame realizado para comprovar a existência de lesões decorrentes de acidentes de trânsito, a fim de subsidiar pedidos de indenização baseados no seguro obrigatório de danos pessoais (DPVAT).">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame3_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame3_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame3_entradas" name="exame3_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame3_entregas">Entregas:</label>
+            <label class="field-label" for="exame3_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame3_entregas" name="exame3_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame3_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame3_entregas_anterior" name="exame3_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame3_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame3_acumuladas" name="exame3_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame3_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame3_tempo" name="exame3_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 4 -->
       <div class="question">
-        <label class="exam-label" for="exame4">4. Exame de Lesões Corporais (Odontológico)
-          <span class="info-icon" title="Análise de lesões bucais.">i</span>
+        <label class="exam-label" for="exame4">
+          4. Exame de Lesões Corporais (Odontológico)
+          <span class="info-icon" title="Análise de lesões na região bucal e nos dentes, geralmente realizadas por odontolegistas, para determinar a extensão do dano e sua possível causa, com relevância em casos de agressão ou acidentes.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame4_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame4_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame4_entradas" name="exame4_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame4_entregas">Entregas:</label>
+            <label class="field-label" for="exame4_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame4_entregas" name="exame4_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame4_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame4_entregas_anterior" name="exame4_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame4_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame4_acumuladas" name="exame4_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame4_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame4_tempo" name="exame4_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 5 -->
       <div class="question">
-        <label class="exam-label" for="exame5">5. Exame para Verificação de Violência Sexual
-          <span class="info-icon" title="Procedimento para comprovar violência sexual.">i</span>
+        <label class="exam-label" for="exame5">
+          5. Exame para Verificação de Violência Sexual
+          <span class="info-icon" title="Procedimento destinado a comprovar a ocorrência de violência sexual. Envolve exames físicos detalhados e, em alguns casos, coleta de amostras biológicas para análise laboratorial.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame5_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame5_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame5_entradas" name="exame5_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame5_entregas">Entregas:</label>
+            <label class="field-label" for="exame5_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame5_entregas" name="exame5_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame5_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame5_entregas_anterior" name="exame5_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame5_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame5_acumuladas" name="exame5_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame5_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame5_tempo" name="exame5_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 6 -->
       <div class="question">
-        <label class="exam-label" for="exame6">6. Exame para Verificação de Aborto
-          <span class="info-icon" title="Identifica sinais de aborto.">i</span>
+        <label class="exam-label" for="exame6">
+          6. Exame para Verificação de Aborto
+          <span class="info-icon" title="Exame que visa identificar sinais indicativos de interrupção voluntária ou forçada de uma gravidez, verificando a presença de procedimentos médicos ou lesões no útero e órgãos reprodutivos.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame6_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame6_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame6_entradas" name="exame6_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame6_entregas">Entregas:</label>
+            <label class="field-label" for="exame6_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame6_entregas" name="exame6_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame6_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame6_entregas_anterior" name="exame6_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame6_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame6_acumuladas" name="exame6_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame6_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame6_tempo" name="exame6_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 7 -->
       <div class="question">
-        <label class="exam-label" for="exame7">7. Exames em Prontuários Médicos
-          <span class="info-icon" title="Análise de registros médicos.">i</span>
+        <label class="exam-label" for="exame7">
+          7. Exames em Prontuários Médicos
+          <span class="info-icon" title="Análise documental de registros médicos, a fim de esclarecer informações sobre diagnósticos, tratamentos ou causas de morte, para fins periciais.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame7_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame7_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame7_entradas" name="exame7_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame7_entregas">Entregas:</label>
+            <label class="field-label" for="exame7_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame7_entregas" name="exame7_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame7_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame7_entregas_anterior" name="exame7_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame7_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame7_acumuladas" name="exame7_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame7_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame7_tempo" name="exame7_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 8 -->
       <div class="question">
-        <label class="exam-label" for="exame8">8. Exame de Necropsia
-          <span class="info-icon" title="Autópsia para determinar a causa da morte.">i</span>
+        <label class="exam-label" for="exame8">
+          8. Exame de Necropsia
+          <span class="info-icon" title="Procedimento que consiste em autópsia realizada em cadáveres para determinar a causa da morte, a dinâmica dos ferimentos e outros elementos relevantes para a investigação criminal.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame8_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame8_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame8_entradas" name="exame8_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame8_entregas">Entregas:</label>
+            <label class="field-label" for="exame8_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame8_entregas" name="exame8_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame8_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame8_entregas_anterior" name="exame8_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame8_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame8_acumuladas" name="exame8_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame8_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame8_tempo" name="exame8_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
       <!-- Item 9 -->
       <div class="question">
-        <label class="exam-label" for="exame9">9. Exame Psiquiátrico (Sanidade Mental)
-          <span class="info-icon" title="Avaliação da capacidade mental e responsabilidade penal.">i</span>
+        <label class="exam-label" for="exame9">
+          9. Exame Psiquiátrico (Sanidade Mental)
+          <span class="info-icon" title="Avaliação especializada destinada a verificar a capacidade mental de uma pessoa, com foco em determinar sua responsabilidade penal e condição de discernimento no momento do crime.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame9_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame9_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame9_entradas" name="exame9_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame9_entregas">Entregas:</label>
+            <label class="field-label" for="exame9_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame9_entregas" name="exame9_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame9_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame9_entregas_anterior" name="exame9_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame9_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame9_acumuladas" name="exame9_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame9_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame9_tempo" name="exame9_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
-      <!-- Item 10 -->
+      <!-- Item 10: Exame de Exumação -->
       <div class="question">
-        <label class="exam-label" for="exame10">10. Exame de Dependência Toxicológica
-          <span class="info-icon" title="Avaliação da dependência de substâncias psicoativas.">i</span>
+        <label class="exam-label" for="exame10">
+          10. Exame de Exumação
+          <span class="info-icon" title="Procedimento realizado para análise de um corpo já sepultado, com o objetivo de verificar a causa da morte, coletar novas evidências ou revisar exames médicos anteriores.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame10_entradas">Entradas (<span class="ref-year">2023</span>):</label>
+            <label class="field-label" for="exame10_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
             <input type="text" id="exame10_entradas" name="exame10_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame10_entregas">Entregas:</label>
+            <label class="field-label" for="exame10_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
             <input type="text" id="exame10_entregas" name="exame10_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame10_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame10_entregas_anterior" name="exame10_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame10_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros.">i</span>
+            </label>
+            <input type="text" id="exame10_acumuladas" name="exame10_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame10_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização de um exame desta natureza em sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame10_tempo" name="exame10_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
-      <!-- Item 11 -->
+      <!-- Item 11: Exame de Antropologia -->
       <div class="question">
-        <label class="exam-label" for="exame11">11. Identificação Humana pelos Arcos Dentais
-          <span class="info-icon" title="Utiliza a arcada dentária para identificar vítimas.">i</span>
+        <label class="exam-label" for="exame_antropologia">
+          11. Exame de Antropologia
+          <span class="info-icon" title="Analisa ossos para identificar traumas, fraturas e sinais de violência, ajudando a esclarecer a causa e as circunstâncias da morte. Usado em casos de Carbonização ou Esqueletização.">i</span>
         </label>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="exame11_entradas">Entradas (<span class="ref-year">2023</span>):</label>
-            <input type="text" id="exame11_entradas" name="exame11_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame_antropologia_entradas">       - Número de Requisições em <span class="ref-year">2023</span>:</label>
+            <input type="text" id="exame_antropologia_entradas" name="exame_antropologia_entradas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame11_entregas">Entregas:</label>
-            <input type="text" id="exame11_entregas" name="exame11_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame_antropologia_entregas">       - Laudos Expedidos (referente às requisições de <span class="ref-year">2023</span>):</label>
+            <input type="text" id="exame_antropologia_entregas" name="exame_antropologia_entregas" maxlength="6" pattern="\d{1,6}" required>
           </div>
           <div class="field">
-            <label class="field-label" for="exame11_entregas_anterior">Acumuladas:</label>
-            <input type="text" id="exame11_entregas_anterior" name="exame11_entregas_anterior" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="exame_antropologia_acumuladas">
+                     - Número de exames pendentes (qualquer ano):
+              <span class="info-icon" title="Laudos pendentes por diversos motivos.">i</span>
+            </label>
+            <input type="text" id="exame_antropologia_acumuladas" name="exame_antropologia_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="exame_antropologia_tempo">
+                     - Tempo médio/estimado para realização do exame (em horas):
+              <span class="info-icon" title="       - Tempo médio para a realização deste exame na sua Unidade da Perícia">i</span>
+            </label>
+            <input type="text" id="exame_antropologia_tempo" name="exame_antropologia_tempo" maxlength="6" required>
           </div>
         </div>
       </div>
+      <!-- Nova Seção: Características dos Cadáveres -->
+      <div class="cadaveres">
+        <h2>Características dos Cadáveres</h2>
+        
+        <!-- Item: Carbonizado -->
+        <div class="question">
+          <label class="exam-label" for="cad1">
+            a) Carbonizado
+            <span class="info-icon" title="Corpos expostos a altas temperaturas, resultando em danos extensos aos tecidos e ossos. A identificação é realizada preferencialmente por meio da arcada dentária ou análise de DNA.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="cad1_quant">       - Quantidade em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="cad1_quant" name="cad1_quant" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item: Putrefeito -->
+        <div class="question">
+          <label class="exam-label" for="cad2">
+            b) Putrefeito
+            <span class="info-icon" title="Cadáveres em avançado estado de decomposição, exigindo exames específicos, como DNA e antropologia forense, para identificação e determinação da causa da morte.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="cad2_quant">       - Quantidade em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="cad2_quant" name="cad2_quant" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item: Esqueletizado (Restos Ósseos) -->
+        <div class="question">
+          <label class="exam-label" for="cad3">
+            c) Esqueletizado (Restos Ósseos)
+            <span class="info-icon" title="Ossadas ou fragmentos ósseos que necessitam de exames antropológicos, odontológicos e genéticos para identificação e análise das lesões.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="cad3_quant">       - Quantidade em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="cad3_quant" name="cad3_quant" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item: Feto -->
+        <div class="question">
+          <label class="exam-label" for="cad4">
+            d) Feto
+            <span class="info-icon" title="Restos fetais encaminhados para perícia com o objetivo de determinar idade gestacional, viabilidade de vida e possíveis causas da morte.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="cad4_quant">       - Quantidade em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="cad4_quant" name="cad4_quant" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item: Natimorto -->
+        <div class="question">
+          <label class="exam-label" for="cad5">
+            e) Natimorto
+            <span class="info-icon" title="Fetos que faleceram antes ou durante o parto, sendo examinados para esclarecer a causa do óbito e possíveis anormalidades congênitas.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="cad5_quant">       - Quantidade em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="cad5_quant" name="cad5_quant" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item: Partes de Corpo Humano -->
+        <div class="question">
+          <label class="exam-label" for="cad6">
+            f) Partes de Corpo Humano
+            <span class="info-icon" title="Fragmentos corpóreos encontrados isoladamente, exigindo exames de DNA, antropologia forense ou necropapiloscopia para identificação e associação com possíveis vítimas.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="cad6_quant">       - Quantidade em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="cad6_quant" name="cad6_quant" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item: Cadáveres preservados -->
+        <div class="question">
+          <label class="exam-label" for="cad7">
+            g) Cadáveres preservados
+            <span class="info-icon" title="Corpo sem sinais avançados de decomposição, preservado o suficiente para exames necroscópicos convencionais.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="cad7_quant">       - Quantidade em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="cad7_quant" name="cad7_quant" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        
+      </div> <!-- Fim da seção Características dos Cadáveres -->
     </main>
     <footer>
       <p><a href="index.html">Voltar ao Menu</a></p>
     </footer>
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      const refYearSelect = document.getElementById("refYear");
-      function updateRefYear() {
-        const selectedYear = refYearSelect.value;
-        document.querySelectorAll(".ref-year").forEach(span => {
-          span.textContent = selectedYear;
-        });
-      }
-      refYearSelect.addEventListener("change", updateRefYear);
-      updateRefYear();
+    // Atualiza o campo estático com o ano e estado selecionados no index.html
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+    });
+
+    // Atualiza os spans com a classe "ref-year" com o ano selecionado
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = anoSelecionado;
+      });
+    });
+
+    document.querySelectorAll('input[type="text"]').forEach(function(input) {
+      input.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+      });
     });
   </script>
 </body>

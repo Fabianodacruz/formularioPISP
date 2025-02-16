@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Balística Forense - Questionário de Exames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      border-bottom: 2px solid #dadce0;
+      padding-bottom: 5px;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .exam-label {
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .field-label {
+      font-size: 16px;
+      min-width: 320px;
+    }
+    .field input[type="text"] {
+      width: 6ch;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+    }
+    .info-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #4285f4;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    a {
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Balística Forense</h1>
+      <div class="static-info" id="staticInfo">
+        <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
+      </div>
+    </header>
+    <main>
+      <!-- Seção: Natureza dos Exames -->
+      <section>
+        <h2>Balística Forense - Natureza dos Exames</h2>
+        <!-- Item 1: Exame de Simples Constatação -->
+        <div class="question">
+          <label class="exam-label" for="balistica1">1. Exame de Simples Constatação
+            <span class="info-icon" title="Verificação de números de série e características básicas.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica1_entradas">      - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica1_entradas" name="balistica1_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica1_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica1_entregas" name="balistica1_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica1_acumuladas">
+                      - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica1_acumuladas" name="balistica1_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica1_tempo">
+                      - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="balistica1_tempo" name="balistica1_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2: Exame de Eficiência e Prestabilidade -->
+        <div class="question">
+          <label class="exam-label" for="balistica2">2. Exame de Eficiência e Prestabilidade
+            <span class="info-icon" title="Testa o funcionamento da arma e avalia o estado das munições.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica2_entradas">      - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica2_entradas" name="balistica2_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica2_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica2_entregas" name="balistica2_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica2_acumuladas">
+                      - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica2_acumuladas" name="balistica2_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica2_tempo">
+                      - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="balistica2_tempo" name="balistica2_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3: Coleta de Padrão – SINAB -->
+        <div class="question">
+          <label class="exam-label" for="balistica3">3. Coleta de Padrão – SINAB
+            <span class="info-icon" title="Coleta de projéteis e estojos para o SINAB.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica3_entradas">      - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica3_entradas" name="balistica3_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica3_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica3_entregas" name="balistica3_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica3_acumuladas">
+                      - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica3_acumuladas" name="balistica3_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica3_tempo">
+                      - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="balistica3_tempo" name="balistica3_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4: Exame de Inserção no BNPB -->
+        <div class="question">
+          <label class="exam-label" for="balistica4">4. Exame de Inserção no BNPB
+            <span class="info-icon" title="Cadastro de armas ou munições no BNPB.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica4_entradas">      - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica4_entradas" name="balistica4_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica4_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica4_entregas" name="balistica4_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica4_acumuladas">
+                      - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica4_acumuladas" name="balistica4_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica4_tempo">
+                      - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="balistica4_tempo" name="balistica4_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5: Exame de Confronto Balístico -->
+        <div class="question">
+          <label class="exam-label" for="balistica5">5. Exame de Confronto Balístico
+            <span class="info-icon" title="Compara projéteis e estojos para identificar a arma utilizada.">i</span>
+          </label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica5_entradas">      - Número de Requisições em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica5_entradas" name="balistica5_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica5_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica5_entregas" name="balistica5_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica5_acumuladas">
+                      - Número de exames pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica5_acumuladas" name="balistica5_acumuladas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica5_tempo">
+                      - Tempo médio/estimado para realização do exame (em horas):
+                <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              </label>
+              <input type="text" id="balistica5_tempo" name="balistica5_tempo" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Seção: Balística Forense - Peças Analisadas -->
+      <section>
+        <h2>Balística Forense - Peças Analisadas</h2>
+        <!-- a) Arma(s) de Choque -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece1">a) Arma(s) de Choque:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece1_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece1_entradas" name="balistica_piece1_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece1_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece1_entregas" name="balistica_piece1_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece1_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece1_pendentes" name="balistica_piece1_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- b) Arma(s) de Pressão -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece2">b) Arma(s) de Pressão:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece2_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece2_entradas" name="balistica_piece2_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece2_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece2_entregas" name="balistica_piece2_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece2_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece2_pendentes" name="balistica_piece2_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- c) Carabina(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece3">c) Carabina(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece3_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece3_entradas" name="balistica_piece3_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece3_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece3_entregas" name="balistica_piece3_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece3_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece3_pendentes" name="balistica_piece3_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- d) Carregador(es) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece4">d) Carregador(es):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece4_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece4_entradas" name="balistica_piece4_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece4_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece4_entregas" name="balistica_piece4_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece4_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece4_pendentes" name="balistica_piece4_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- e) Cartucho(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece5">e) Cartucho(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece5_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece5_entradas" name="balistica_piece5_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece5_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece5_entregas" name="balistica_piece5_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece5_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece5_pendentes" name="balistica_piece5_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- f) Espingarda(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece6">f) Espingarda(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece6_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece6_entradas" name="balistica_piece6_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece6_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece6_entregas" name="balistica_piece6_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece6_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece6_pendentes" name="balistica_piece6_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- g) Espoleta(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece7">g) Espoleta(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece7_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece7_entradas" name="balistica_piece7_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece7_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece7_entregas" name="balistica_piece7_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece7_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece7_pendentes" name="balistica_piece7_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- h) Estojo(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece8">h) Estojo(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece8_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece8_entradas" name="balistica_piece8_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece8_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece8_entregas" name="balistica_piece8_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece8_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece8_pendentes" name="balistica_piece8_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- i) Fuzil(is) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece9">i) Fuzil(is):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece9_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece9_entradas" name="balistica_piece9_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece9_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece9_entregas" name="balistica_piece9_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece9_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece9_pendentes" name="balistica_piece9_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- j) Garrucha(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece10">j) Garrucha(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece10_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece10_entradas" name="balistica_piece10_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece10_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece10_entregas" name="balistica_piece10_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece10_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece10_pendentes" name="balistica_piece10_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- k) Jet Loader -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece11">k) Jet Loader:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece11_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece11_entradas" name="balistica_piece11_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece11_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece11_entregas" name="balistica_piece11_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece11_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece11_pendentes" name="balistica_piece11_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- l) Metralhadora(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece12">l) Metralhadora(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece12_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece12_entradas" name="balistica_piece12_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece12_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece12_entregas" name="balistica_piece12_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece12_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece12_pendentes" name="balistica_piece12_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- m) Pistola(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece13">m) Pistola(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece13_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece13_entradas" name="balistica_piece13_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece13_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece13_entregas" name="balistica_piece13_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece13_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece13_pendentes" name="balistica_piece13_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- n) Pistoleta(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece14">n) Pistoleta(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece14_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece14_entradas" name="balistica_piece14_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece14_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece14_entregas" name="balistica_piece14_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece14_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece14_pendentes" name="balistica_piece14_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- o) Pólvora -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece15">o) Pólvora:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece15_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece15_entradas" name="balistica_piece15_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece15_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece15_entregas" name="balistica_piece15_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece15_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece15_pendentes" name="balistica_piece15_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- p) Projéteis -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece16">p) Projéteis:</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece16_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece16_entradas" name="balistica_piece16_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece16_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece16_entregas" name="balistica_piece16_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece16_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece16_pendentes" name="balistica_piece16_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- q) Revólver(es) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece17">q) Revólver(es):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece17_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece17_entradas" name="balistica_piece17_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece17_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece17_entregas" name="balistica_piece17_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece17_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece17_pendentes" name="balistica_piece17_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+        <!-- r) Submetralhadora(s) -->
+        <div class="question">
+          <label class="exam-label" for="balistica_piece18">r) Submetralhadora(s):</label>
+          <div class="field-group">
+            <div class="field">
+              <label class="field-label" for="balistica_piece18_entradas">      - Número de entradas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece18_entradas" name="balistica_piece18_entradas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece18_entregas">      - Número de entregas em <span class="ref-year">2023</span>:</label>
+              <input type="text" id="balistica_piece18_entregas" name="balistica_piece18_entregas" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="balistica_piece18_pendentes">
+                      - Número de Pendentes (qualquer ano):
+                <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+              </label>
+              <input type="text" id="balistica_piece18_pendentes" name="balistica_piece18_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p><a href="index.html">Voltar ao Menu</a></p>
+    </footer>
+  </div>
+  <script>
+    // Atualiza dinamicamente os spans com a classe "ref-year" conforme o ano selecionado
+    document.addEventListener("DOMContentLoaded", function(){
+      const refYearSelect = document.getElementById("refYear");
+      function updateRefYear() {
+        const selectedYear = refYearSelect.value;
+        document.querySelectorAll(".ref-year").forEach(span => {
+          span.textContent = selectedYear;
+        });
+      }
+      refYearSelect.addEventListener("change", updateRefYear);
+      updateRefYear();
+    });
+
+    document.querySelectorAll('input[type="text"]').forEach(function(input) {
+      input.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
+      document.querySelectorAll(".ref-year").forEach(span => {
+        span.textContent = anoSelecionado;
+      });
+
+      // Se desejar também exibir os dados estáticos:
+      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
+      const staticInfo = document.getElementById("staticInfo");
+      if (staticInfo) {
+        staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+      }
+    });
+
+    </script>
+</body>
+</html>
