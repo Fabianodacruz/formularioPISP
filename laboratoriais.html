@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Exames Laboratoriais de Química e Toxicologia - Questionário</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Exames Laboratoriais</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -17,7 +20,7 @@
       margin: 50px auto;
       padding: 30px;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     header {
       display: flex;
@@ -31,12 +34,6 @@
     }
     main {
       margin-bottom: 40px;
-    }
-    h2 {
-      border-bottom: 2px solid #dadce0;
-      padding-bottom: 5px;
-      font-size: 20px;
-      margin-bottom: 15px;
     }
     .question {
       margin-bottom: 20px;
@@ -67,9 +64,9 @@
     }
     .field-label {
       font-size: 16px;
-      min-width: 320px;
+      min-width: 370px; /* Ajuste conforme a necessidade */
     }
-    .field input[type="text"] {
+    .field input[type='text'] {
       width: 6ch;
       padding: 5px;
       font-size: 16px;
@@ -90,7 +87,11 @@
       margin-left: 8px;
       cursor: pointer;
     }
-    a {
+    footer {
+      margin-top: 30px;
+      text-align: center;
+    }
+    footer a {
       color: #4285f4;
       text-decoration: none;
       font-weight: bold;
@@ -100,7 +101,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>Exames Laboratoriais de Química e Toxicologia</h1>
+      <h1>Exames Laboratoriais</h1>
       <div>
         <label for="refYear">Ano de Referência:</label>
         <select id="refYear">
@@ -111,341 +112,953 @@
       </div>
     </header>
     <main>
-      <!-- Item 1: Exame Residuográfico -->
+      <section>
+      <!-- Exame 1: Exame Residuográfico -->
       <div class="question">
-        <label class="exam-label" for="qt1">
+        <label class="exam-label" for="lab1">
           1. Exame Residuográfico
-          <span class="info-icon" title="Detecta resíduos de disparo de arma de fogo em superfícies como mãos ou roupas, identificando elementos como pólvora, chumbo e antimônio.">i</span>
+          <span
+            class="info-icon"
+            title="Detecta resíduos de disparo de arma de fogo em superfícies como mãos ou roupas, identificando elementos como pólvora, chumbo e antimônio."
+            >i</span
+          >
         </label>
-        <p class="description">Detecta resíduos de disparo de arma de fogo em superfícies como mãos ou roupas, identificando elementos como pólvora, chumbo e antimônio.</p>
+        <p class="description">
+          Detecta resíduos de disparo de arma de fogo em superfícies como mãos ou
+          roupas, identificando elementos como pólvora, chumbo e antimônio.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt1_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt1_entradas" name="qt1_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab1_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab1_entradas"
+              name="lab1_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt1_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt1_entregas" name="qt1_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab1_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab1_entregas"
+              name="lab1_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt1_pendentes">
+            <label class="field-label" for="lab1_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt1_pendentes" name="qt1_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab1_pendentes"
+              name="lab1_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt1_tempo">
+            <label class="field-label" for="lab1_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt1_tempo" name="qt1_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab1_tempo"
+              name="lab1_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
 
-      <!-- Item 2: Exame Toxicológico -->
+      <!-- Exame 2: Exame de Substâncias Químicas -->
       <div class="question">
-        <label class="exam-label" for="qt2">
-          2. Exame Toxicológico
-          <span class="info-icon" title="Analisa a presença de substâncias tóxicas em amostras biológicas ou materiais coletados, em casos de envenenamento ou exposição química.">i</span>
+        <label class="exam-label" for="lab2">
+          2. Exame de Substâncias Químicas
+          <span
+            class="info-icon"
+            title="Identifica e quantifica a presença de drogas ilícitas em materiais apreendidos, utilizando técnicas como cromatografia e espectrometria."
+            >i</span
+          >
         </label>
-        <p class="description">Analisa a presença de substâncias tóxicas em amostras biológicas ou materiais coletados, em casos de envenenamento ou exposição química.</p>
+        <p class="description">
+          Identifica e quantifica a presença de drogas ilícitas em materiais
+          apreendidos, utilizando técnicas como cromatografia e espectrometria.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt2_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt2_entradas" name="qt2_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab2_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab2_entradas"
+              name="lab2_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt2_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt2_entregas" name="qt2_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab2_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab2_entregas"
+              name="lab2_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt2_pendentes">
+            <label class="field-label" for="lab2_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt2_pendentes" name="qt2_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab2_pendentes"
+              name="lab2_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt2_tempo">
+            <label class="field-label" for="lab2_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt2_tempo" name="qt2_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab2_tempo"
+              name="lab2_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
 
-      <!-- Item 3: Exame de Drogas Ilícitas -->
+      <!-- Exame 3: Exame de alimentos - bebidas -->
       <div class="question">
-        <label class="exam-label" for="qt3">
-          3. Exame de Drogas Ilícitas
-          <span class="info-icon" title="Identifica e quantifica a presença de drogas ilícitas em materiais apreendidos, utilizando técnicas como cromatografia e espectrometria.">i</span>
+        <label class="exam-label" for="lab3">
+          3. Exame de alimentos - bebidas
+          <span
+            class="info-icon"
+            title="Análise laboratorial que verifica a qualidade e segurança de produtos alimentícios, identificando possíveis contaminações ou adulterações."
+            >i</span
+          >
         </label>
-        <p class="description">Identifica e quantifica a presença de drogas ilícitas em materiais apreendidos, utilizando técnicas como cromatografia e espectrometria.</p>
+        <p class="description">
+          Análise laboratorial que verifica a qualidade e segurança de produtos
+          alimentícios, identificando possíveis contaminações ou adulterações.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt3_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt3_entradas" name="qt3_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab3_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab3_entradas"
+              name="lab3_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt3_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt3_entregas" name="qt3_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab3_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab3_entregas"
+              name="lab3_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt3_pendentes">
+            <label class="field-label" for="lab3_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt3_pendentes" name="qt3_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab3_pendentes"
+              name="lab3_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt3_tempo">
+            <label class="field-label" for="lab3_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt3_tempo" name="qt3_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab3_tempo"
+              name="lab3_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
 
-      <!-- Item 4: Exame de Produtos Químicos Controlados -->
+      <!-- Exame 4: Exame de inflamáveis -->
       <div class="question">
-        <label class="exam-label" for="qt4">
-          4. Exame de Produtos Químicos Controlados
-          <span class="info-icon" title="Determina se substâncias apreendidas estão incluídas em listas de controle, como precursores químicos usados na produção de drogas ou explosivos.">i</span>
+        <label class="exam-label" for="lab4">
+          4. Exame de inflamáveis
+          <span
+            class="info-icon"
+            title="Identifica e caracteriza substâncias inflamáveis em cenários suspeitos, como locais de incêndio ou explosão."
+            >i</span
+          >
         </label>
-        <p class="description">Determina se substâncias apreendidas estão incluídas em listas de controle, como precursores químicos usados na produção de drogas ou explosivos.</p>
+        <p class="description">
+          Identifica e caracteriza substâncias inflamáveis em cenários suspeitos,
+          como locais de incêndio ou explosão.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt4_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt4_entradas" name="qt4_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab4_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab4_entradas"
+              name="lab4_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt4_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt4_entregas" name="qt4_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab4_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab4_entregas"
+              name="lab4_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt4_pendentes">
+            <label class="field-label" for="lab4_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt4_pendentes" name="qt4_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab4_pendentes"
+              name="lab4_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt4_tempo">
+            <label class="field-label" for="lab4_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt4_tempo" name="qt4_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab4_tempo"
+              name="lab4_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
 
-      <!-- Item 5: Exame de Substâncias em Amostras Biológicas -->
+      <!-- Exame 5: Exame de Resíduos Químicos -->
       <div class="question">
-        <label class="exam-label" for="qt5">
-          5. Exame de Substâncias em Amostras Biológicas
-          <span class="info-icon" title="Analisa amostras de sangue, urina ou outros materiais biológicos para detectar substâncias como álcool, drogas ou venenos.">i</span>
+        <label class="exam-label" for="lab5">
+          5. Exame de Resíduos Químicos
+          <span
+            class="info-icon"
+            title="Examina vestígios de produtos químicos encontrados em locais de crime para identificar substâncias relacionadas ao evento investigado."
+            >i</span
+          >
         </label>
-        <p class="description">Analisa amostras de sangue, urina ou outros materiais biológicos para detectar substâncias como álcool, drogas ou venenos.</p>
+        <p class="description">
+          Examina vestígios de produtos químicos encontrados em locais de crime
+          para identificar substâncias relacionadas ao evento investigado.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt5_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt5_entradas" name="qt5_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab5_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab5_entradas"
+              name="lab5_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt5_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt5_entregas" name="qt5_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab5_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab5_entregas"
+              name="lab5_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt5_pendentes">
+            <label class="field-label" for="lab5_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt5_pendentes" name="qt5_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab5_pendentes"
+              name="lab5_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt5_tempo">
+            <label class="field-label" for="lab5_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt5_tempo" name="qt5_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab5_tempo"
+              name="lab5_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
 
-      <!-- Item 6: Exame de Resíduos Químicos em Local de Crime -->
+      <!-- Exame 6: Exame de Explosivos -->
       <div class="question">
-        <label class="exam-label" for="qt6">
-          6. Exame de Resíduos Químicos em Local de Crime
-          <span class="info-icon" title="Examina vestígios de produtos químicos encontrados em locais de crime para identificar substâncias relacionadas ao evento investigado.">i</span>
+        <label class="exam-label" for="lab6">
+          6. Exame de Explosivos
+          <span
+            class="info-icon"
+            title="Avalia a composição química de materiais explosivos, buscando determinar sua origem e potencial de explosão."
+            >i</span
+          >
         </label>
-        <p class="description">Examina vestígios de produtos químicos encontrados em locais de crime para identificar substâncias relacionadas ao evento investigado.</p>
+        <p class="description">
+          Avalia a composição química de materiais explosivos, buscando determinar
+          sua origem e potencial de explosão.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt6_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt6_entradas" name="qt6_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab6_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab6_entradas"
+              name="lab6_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt6_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt6_entregas" name="qt6_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab6_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab6_entregas"
+              name="lab6_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt6_pendentes">
+            <label class="field-label" for="lab6_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt6_pendentes" name="qt6_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab6_pendentes"
+              name="lab6_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt6_tempo">
+            <label class="field-label" for="lab6_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt6_tempo" name="qt6_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab6_tempo"
+              name="lab6_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
 
-      <!-- Item 7: Exame de Explosivos -->
+      <!-- Exame 7: Exame Toxicológico -->
       <div class="question">
-        <label class="exam-label" for="qt7">
-          7. Exame de Explosivos
-          <span class="info-icon" title="Avalia a composição química de materiais explosivos encontrados em locais de crime, buscando determinar sua origem e potencial de explosão.">i</span>
+        <label class="exam-label" for="lab7">
+          7. Exame Toxicológico
+          <span
+            class="info-icon"
+            title="Avalia a presença e a concentração de substâncias tóxicas ou psicoativas em amostras biológicas como sangue, urina ou cabelo, utilizando técnicas como cromatografia e espectrometria."
+            >i</span
+          >
         </label>
-        <p class="description">Avalia a composição química de materiais explosivos encontrados em locais de crime, buscando determinar sua origem e potencial de explosão.</p>
+        <p class="description">
+          Avalia a presença e a concentração de substâncias tóxicas ou psicoativas
+          em amostras biológicas como sangue, urina ou cabelo, utilizando técnicas
+          como cromatografia e espectrometria.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt7_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt7_entradas" name="qt7_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab7_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab7_entradas"
+              name="lab7_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt7_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt7_entregas" name="qt7_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab7_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab7_entregas"
+              name="lab7_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt7_pendentes">
+            <label class="field-label" for="lab7_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt7_pendentes" name="qt7_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab7_pendentes"
+              name="lab7_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt7_tempo">
+            <label class="field-label" for="lab7_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt7_tempo" name="qt7_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab7_tempo"
+              name="lab7_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
 
-      <!-- Item 8: Exame de Poluentes Ambientais -->
+      <!-- Exame 8: Exame de Dosagem/Triagem Alcoólica -->
       <div class="question">
-        <label class="exam-label" for="qt8">
-          8. Exame de Poluentes Ambientais
-          <span class="info-icon" title="Investiga a presença de poluentes ou contaminantes em amostras de água, solo ou ar, em crimes ambientais.">i</span>
+        <label class="exam-label" for="lab8">
+          8. Exame de Dosagem/Triagem Alcoólica
+          <span
+            class="info-icon"
+            title="Determina o nível de álcool em amostras biológicas, como sangue ou ar exalado, para verificar intoxicação alcoólica em investigações criminais ou acidentes de trânsito."
+            >i</span
+          >
         </label>
-        <p class="description">Investiga a presença de poluentes ou contaminantes em amostras de água, solo ou ar, em crimes ambientais.</p>
+        <p class="description">
+          Determina o nível de álcool em amostras biológicas, como sangue ou ar
+          exalado, para verificar intoxicação alcoólica em investigações criminais
+          ou acidentes de trânsito.
+        </p>
         <div class="field-group">
           <div class="field">
-            <label class="field-label" for="qt8_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt8_entradas" name="qt8_entradas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab8_entradas">
+              - Número de Requisições em <span class="ref-year">N/D</span>:
+            </label>
+            <input
+              type="text"
+              id="lab8_entradas"
+              name="lab8_entradas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt8_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt8_entregas" name="qt8_entregas" maxlength="6" pattern="\d{1,6}" required>
+            <label class="field-label" for="lab8_entregas">
+              - Laudos Expedidos (referente às requisições de
+              <span class="ref-year">N/D</span>):
+            </label>
+            <input
+              type="text"
+              id="lab8_entregas"
+              name="lab8_entregas"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt8_pendentes">
+            <label class="field-label" for="lab8_pendentes">
               - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
+              <span
+                class="info-icon"
+                title="Laudos pendentes, por qualquer motivo, como pendência de exame complementar, pendência do perito, pendência do periciando, entre outros."
+                >i</span
+              >
             </label>
-            <input type="text" id="qt8_pendentes" name="qt8_pendentes" maxlength="6" pattern="\d{1,6}" required>
+            <input
+              type="text"
+              id="lab8_pendentes"
+              name="lab8_pendentes"
+              maxlength="6"
+              required
+            />
           </div>
           <div class="field">
-            <label class="field-label" for="qt8_tempo">
+            <label class="field-label" for="lab8_tempo">
               - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
+              <span
+                class="info-icon"
+                title="Tempo médio para a realização deste exame em sua Unidade da Perícia"
+                >i</span
+              >
             </label>
-            <input type="text" id="qt8_tempo" name="qt8_tempo" maxlength="6" required>
+            <input
+              type="text"
+              id="lab8_tempo"
+              name="lab8_tempo"
+              maxlength="6"
+              required
+            />
           </div>
         </div>
       </div>
+    </section>
+    <!-- Seção: Peças/Amostras de Drogas, Medicamentos e Solventes -->
+<section>
+  <h2>Peças/Amostras - Drogas, Medicamentos e Solventes</h2>
 
-      <!-- Item 9: Exame de Dosagem/Triagem Toxicológica -->
-      <div class="question">
-        <label class="exam-label" for="qt9">
-          9. Exame de Dosagem/Triagem Toxicológica
-          <span class="info-icon" title="Avalia a presença e a concentração de substâncias tóxicas ou psicoativas em amostras biológicas, utilizando técnicas como cromatografia e espectrometria.">i</span>
+  <!-- a) Cocaína -->
+  <div class="question">
+    <label class="exam-label" for="cocaina">
+      a) Cocaína
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="cocaina_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
         </label>
-        <p class="description">Avalia a presença e a concentração de substâncias tóxicas ou psicoativas em amostras biológicas, utilizando técnicas como cromatografia e espectrometria.</p>
-        <div class="field-group">
-          <div class="field">
-            <label class="field-label" for="qt9_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt9_entradas" name="qt9_entradas" maxlength="6" pattern="\d{1,6}" required>
-          </div>
-          <div class="field">
-            <label class="field-label" for="qt9_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt9_entregas" name="qt9_entregas" maxlength="6" pattern="\d{1,6}" required>
-          </div>
-          <div class="field">
-            <label class="field-label" for="qt9_pendentes">
-              - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
-            </label>
-            <input type="text" id="qt9_pendentes" name="qt9_pendentes" maxlength="6" pattern="\d{1,6}" required>
-          </div>
-          <div class="field">
-            <label class="field-label" for="qt9_tempo">
-              - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
-            </label>
-            <input type="text" id="qt9_tempo" name="qt9_tempo" maxlength="6" required>
-          </div>
-        </div>
+        <input type="text" id="cocaina_entradas" name="cocaina_entradas" maxlength="6" required>
       </div>
+      <div class="field">
+        <label class="field-label" for="cocaina_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="cocaina_entregues" name="cocaina_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="cocaina_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="cocaina_pendentes" name="cocaina_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
 
-      <!-- Item 10: Exame de Dosagem/Triagem Alcoólica -->
-      <div class="question">
-        <label class="exam-label" for="qt10">
-          10. Exame de Dosagem/Triagem Alcoólica
-          <span class="info-icon" title="Determina o nível de álcool em amostras biológicas, como sangue ou ar exalado, para verificar intoxicação alcoólica em investigações criminais ou acidentes de trânsito.">i</span>
+  <!-- b) Crack -->
+  <div class="question">
+    <label class="exam-label" for="crack">
+      b) Crack
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="crack_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
         </label>
-        <p class="description">Determina o nível de álcool em amostras biológicas, como sangue ou ar exalado, para verificar intoxicação alcoólica em investigações criminais ou acidentes de trânsito.</p>
-        <div class="field-group">
-          <div class="field">
-            <label class="field-label" for="qt10_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt10_entradas" name="qt10_entradas" maxlength="6" pattern="\d{1,6}" required>
-          </div>
-          <div class="field">
-            <label class="field-label" for="qt10_entregas">- Número de entregas em <span class="ref-year">2023</span>:</label>
-            <input type="text" id="qt10_entregas" name="qt10_entregas" maxlength="6" pattern="\d{1,6}" required>
-          </div>
-          <div class="field">
-            <label class="field-label" for="qt10_pendentes">
-              - Número de exames pendentes (qualquer ano):
-              <span class="info-icon" title="Represado pendente de exame, independentemente do ano da entrada">i</span>
-            </label>
-            <input type="text" id="qt10_pendentes" name="qt10_pendentes" maxlength="6" pattern="\d{1,6}" required>
-          </div>
-          <div class="field">
-            <label class="field-label" for="qt10_tempo">
-              - Tempo médio/estimado para realização do exame (em horas):
-              <span class="info-icon" title="Tempo médio para a realização deste exame em sua Unidade da Perícia">i</span>
-            </label>
-            <input type="text" id="qt10_tempo" name="qt10_tempo" maxlength="6" required>
-          </div>
-        </div>
+        <input type="text" id="crack_entradas" name="crack_entradas" maxlength="6" required>
       </div>
+      <div class="field">
+        <label class="field-label" for="crack_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="crack_entregues" name="crack_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="crack_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="crack_pendentes" name="crack_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- c) Ecstasy -->
+  <div class="question">
+    <label class="exam-label" for="ecstasy">
+      c) Ecstasy
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="ecstasy_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="ecstasy_entradas" name="ecstasy_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="ecstasy_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="ecstasy_entregues" name="ecstasy_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="ecstasy_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="ecstasy_pendentes" name="ecstasy_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- d) Haxixe -->
+  <div class="question">
+    <label class="exam-label" for="haxixe">
+      d) Haxixe
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="haxixe_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="haxixe_entradas" name="haxixe_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="haxixe_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="haxixe_entregues" name="haxixe_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="haxixe_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="haxixe_pendentes" name="haxixe_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- e) Lança-perfume -->
+  <div class="question">
+    <label class="exam-label" for="lancaperfume">
+      e) Lança-perfume
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="lancaperfume_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="lancaperfume_entradas" name="lancaperfume_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="lancaperfume_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="lancaperfume_entregues" name="lancaperfume_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="lancaperfume_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="lancaperfume_pendentes" name="lancaperfume_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- f) LSD -->
+  <div class="question">
+    <label class="exam-label" for="lsd">
+      f) LSD
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="lsd_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="lsd_entradas" name="lsd_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="lsd_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="lsd_entregues" name="lsd_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="lsd_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="lsd_pendentes" name="lsd_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- g) Maconha -->
+  <div class="question">
+    <label class="exam-label" for="maconha">
+      g) Maconha
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="maconha_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="maconha_entradas" name="maconha_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="maconha_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="maconha_entregues" name="maconha_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="maconha_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="maconha_pendentes" name="maconha_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- h) Anabolizante(s) -->
+  <div class="question">
+    <label class="exam-label" for="anabolizante">
+      h) Anabolizante(s)
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="anabolizante_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="anabolizante_entradas" name="anabolizante_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="anabolizante_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="anabolizante_entregues" name="anabolizante_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="anabolizante_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="anabolizante_pendentes" name="anabolizante_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- i) Cigarro(s) -->
+  <div class="question">
+    <label class="exam-label" for="cigarros">
+      i) Cigarro(s)
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="cigarros_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="cigarros_entradas" name="cigarros_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="cigarros_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="cigarros_entregues" name="cigarros_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="cigarros_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="cigarros_pendentes" name="cigarros_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- j) Medicamento(s) -->
+  <div class="question">
+    <label class="exam-label" for="medicamento">
+      j) Medicamento(s)
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="medicamento_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="medicamento_entradas" name="medicamento_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="medicamento_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="medicamento_entregues" name="medicamento_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="medicamento_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="medicamento_pendentes" name="medicamento_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- k) Solventes -->
+  <div class="question">
+    <label class="exam-label" for="solventes">
+      k) Solventes
+    </label>
+    <div class="field-group">
+      <div class="field">
+        <label class="field-label" for="solventes_entradas">
+          - Número amostras de entradas em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="solventes_entradas" name="solventes_entradas" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="solventes_entregues">
+          - Número amostras entregues em <span class="ref-year">N/D</span>:
+        </label>
+        <input type="text" id="solventes_entregues" name="solventes_entregues" maxlength="6" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="solventes_pendentes">
+          - Número de amostras Pendentes (qualquer ano):
+          <span class="info-icon" title="Passivo acumulado aguardando perícia">i</span>
+        </label>
+        <input type="text" id="solventes_pendentes" name="solventes_pendentes" maxlength="6" required>
+      </div>
+    </div>
+  </div>
+
+</section>
+
     </main>
     <footer>
       <p><a href="index.html">Voltar ao Menu</a></p>
     </footer>
   </div>
   <script>
+    // Se quiser substituir 'N/D' por um valor específico do localStorage:
+    document.addEventListener('DOMContentLoaded', function() {
+      const anoSelecionado = localStorage.getItem('anoSelecionado') || 'N/D';
+      document.querySelectorAll('.ref-year').forEach(span => {
+        span.textContent = anoSelecionado;
+      });
+    });
+
     document.addEventListener("DOMContentLoaded", function(){
       const refYearSelect = document.getElementById("refYear");
       function updateRefYear() {
