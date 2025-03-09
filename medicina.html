@@ -8,7 +8,7 @@
     /* Estilos Gerais */
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5;
+      background: linear-gradient(to right, #2A4B7C, #006B3C);
       margin: 0;
       padding: 0;
     }
@@ -22,9 +22,60 @@
     }
     header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+    }
+    .logo-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    .logo-group img {
+      max-height: 100px;
+    }
+    #unbLogo {
+      max-height: 120px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin-bottom: 10px;
+    }
+    nav ul li a {
+      font-family: 'Roboto', sans-serif; /* ou outra família de fontes */
+      font-size: 17px;                   /* tamanho um pouco maior */
+      color: #2A4B7C;                    /* cor mais escura do que o azul padrão */
+      font-weight: 500;                  /* seminegrito */
+      text-decoration: none;             /* remove sublinhado */
+      transition: color 0.2s ease;       /* animação suave ao passar o mouse */
+    }
+
+    nav ul li a:hover {
+      color: #006B3C; /* muda a cor quando hover, para um tom de verde, por exemplo */
+      text-decoration: underline; /* opcional, se quiser sublinhar no hover */
+    }
+    .title {
+      font-size: 28px;
+      margin: 0;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #2A4B7C, #006B3C);
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .static-info {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
     }
     header h1 {
       font-size: 24px;
@@ -96,7 +147,12 @@
 <body>
   <div class="container">
     <header>
-      <h1>Medicina Legal</h1>
+      <div class="logo-group">
+        <img src="mj.jpg" alt="Logomarca Ministério da Justiça e Segurança Pública">
+        <img id="unbLogo" src="unb.png" alt="Logomarca da UnB">
+        <img src="pcp.png" alt="Logomarca Polícia Científica do Paraná">
+      </div>
+      <h1>MEDICINA LEGAL</h1>
       <div class="static-info" id="staticInfo">
         <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
       </div>
@@ -552,26 +608,21 @@
     </footer>
   </div>
   <script>
-    // Atualiza o campo estático com o ano e estado selecionados no index.html
     document.addEventListener("DOMContentLoaded", function() {
-      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
-      const estadoSelecionado = localStorage.getItem("estadoSelecionado") || "N/D";
-      const staticInfo = document.getElementById("staticInfo");
-      staticInfo.textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
-    });
+      setTimeout(() => {
+        console.log("Recuperando dados do localStorage...");
+        const anoSelecionado = localStorage.getItem("anoSelecionado");
+        const estadoSelecionado = localStorage.getItem("estadoSelecionado");
 
-    // Atualiza os spans com a classe "ref-year" com o ano selecionado
-    document.addEventListener("DOMContentLoaded", function() {
-      const anoSelecionado = localStorage.getItem("anoSelecionado") || "N/D";
-      document.querySelectorAll(".ref-year").forEach(span => {
-        span.textContent = anoSelecionado;
-      });
-    });
-
-    document.querySelectorAll('input[type="text"]').forEach(function(input) {
-      input.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '');
-      });
+        console.log("Ano Selecionado:", anoSelecionado);
+        console.log("Estado Selecionado:", estadoSelecionado);
+        
+        if (anoSelecionado && estadoSelecionado) {
+          document.getElementById("staticInfo").textContent = `Ano de Referência: ${anoSelecionado} - Estado: ${estadoSelecionado}`;
+        } else {
+          document.getElementById("staticInfo").textContent = "Ano de Referência e Estado não definidos. Volte ao menu e selecione-os.";
+        }
+      }, 500);
     });
   </script>
 </body>

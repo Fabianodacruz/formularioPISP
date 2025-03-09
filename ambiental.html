@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5;
+      background: linear-gradient(to right, #2A4B7C, #006B3C);
       margin: 0;
       padding: 0;
     }
@@ -21,9 +21,40 @@
     }
     header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+    }
+    .logo-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    .logo-group img {
+      max-height: 100px;
+    }
+    #unbLogo {
+      max-height: 120px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      text-align: center;
+    }
+    .title {
+      font-size: 28px;
+      margin: 0;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #2A4B7C, #006B3C);
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .static-info {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
     }
     header h1 {
       font-size: 24px;
@@ -100,6 +131,11 @@
 <body>
   <div class="container">
     <header>
+      <div class="logo-group">
+        <img src="mj.jpg" alt="Logomarca Ministério da Justiça e Segurança Pública">
+        <img id="unbLogo" src="unb.png" alt="Logomarca da UnB">
+        <img src="pcp.png" alt="Logomarca Polícia Científica do Paraná">
+      </div>
       <h1>Perícias Ambientais</h1>
       <div class="static-info" id="staticInfo">
         <!-- O script vai inserir aqui o texto estático com o ano e estado selecionado -->
@@ -112,9 +148,7 @@
           1. Exame de Necropsia em Cadáver Animal
           <span class="info-icon" title="Realiza necropsia em animais para determinar a causa da morte, verificando sinais de envenenamento, maus-tratos ou outros fatores que possam caracterizar crime ambiental.">i</span>
         </label>
-        <p class="description">
-          Realiza necropsia em animais para determinar a causa da morte, verificando sinais de envenenamento, maus-tratos ou outros fatores que possam caracterizar crime ambiental.
-        </p>
+       
         <div class="field-group">
           <div class="field">
             <label class="field-label" for="amb1_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
@@ -147,9 +181,7 @@
           2. Exame de Identificação de Espécie Vegetal
           <span class="info-icon" title="Identifica e classifica espécies vegetais apreendidas ou encontradas em locais de crime, verificando se pertencem a espécies protegidas ou ameaçadas de extinção.">i</span>
         </label>
-        <p class="description">
-          Identifica e classifica espécies vegetais apreendidas ou encontradas em locais de crime, verificando se pertencem a espécies protegidas ou ameaçadas de extinção.
-        </p>
+       
         <div class="field-group">
           <div class="field">
             <label class="field-label" for="amb2_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
@@ -182,9 +214,7 @@
           3. Exame de Identificação de Espécie da Fauna
           <span class="info-icon" title="Analisa vestígios biológicos para determinar a espécie de um animal envolvido em um crime ambiental, verificando se pertence a fauna silvestre protegida.">i</span>
         </label>
-        <p class="description">
-          Analisa vestígios biológicos para determinar a espécie de um animal envolvido em um crime ambiental, verificando se pertence a fauna silvestre protegida.
-        </p>
+        
         <div class="field-group">
           <div class="field">
             <label class="field-label" for="amb3_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
@@ -217,9 +247,7 @@
           4. Exame de Material Geológico e Arqueológico
           <span class="info-icon" title="Examina materiais geológicos e arqueológicos encontrados em locais de crime para verificar impactos ambientais e autenticidade de artefatos apreendidos.">i</span>
         </label>
-        <p class="description">
-          Examina materiais geológicos e arqueológicos encontrados em locais de crime para verificar impactos ambientais e autenticidade de artefatos apreendidos.
-        </p>
+        
         <div class="field-group">
           <div class="field">
             <label class="field-label" for="amb4_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
@@ -252,9 +280,7 @@
           5. Exame em Local de Crimes Contra o Meio Ambiente
           <span class="info-icon" title="Realiza inspeções em locais onde há suspeita de crimes ambientais, como desmatamento ilegal, poluição hídrica e tráfico de fauna e flora.">i</span>
         </label>
-        <p class="description">
-          Realiza inspeções em locais onde há suspeita de crimes ambientais, como desmatamento ilegal, poluição hídrica e tráfico de fauna e flora.
-        </p>
+        
         <div class="field-group">
           <div class="field">
             <label class="field-label" for="amb5_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
@@ -287,9 +313,7 @@
           6. Exame em Material Relacionado a Crime Ambiental
           <span class="info-icon" title="Analisa materiais apreendidos relacionados a crimes ambientais, como madeira extraída ilegalmente, produtos de origem animal ou vegetal e resíduos poluentes.">i</span>
         </label>
-        <p class="description">
-          Analisa materiais apreendidos relacionados a crimes ambientais, como madeira extraída ilegalmente, produtos de origem animal ou vegetal e resíduos poluentes.
-        </p>
+        
         <div class="field-group">
           <div class="field">
             <label class="field-label" for="amb6_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
@@ -322,9 +346,7 @@
           7. Exame de Geotecnia Ambiental
           <span class="info-icon" title="Avalia aspectos geotécnicos de áreas impactadas por atividades ilegais, verificando riscos de erosão, contaminação do solo e impactos estruturais no meio ambiente.">i</span>
         </label>
-        <p class="description">
-          Avalia aspectos geotécnicos de áreas impactadas por atividades ilegais, verificando riscos de erosão, contaminação do solo e impactos estruturais no meio ambiente.
-        </p>
+        
         <div class="field-group">
           <div class="field">
             <label class="field-label" for="amb7_entradas">- Número de Requisições em <span class="ref-year">2023</span>:</label>
